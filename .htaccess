@@ -1,0 +1,26 @@
+AddType image/x-icon .ico
+AddType image/png .png
+AddType image/jpeg .jpg
+
+RewriteEngine On
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^https://(www\.)?matejkadlec\.cz [NC]
+RewriteRule \.(ico|png|jpg)$ - [F,L]
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ /%1 [NC,L,R]
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^ %{REQUEST_URI}.html [NC,L]
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 6 months"
+</IfModule>
+
+<Files "favicon.ico">
+    Header set Cache-Control "public, max-age=31536000"
+</Files>
