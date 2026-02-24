@@ -5,14 +5,17 @@ AddType image/jpeg .jpg
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    RewriteRule ^index(?:\.html)?/?$ / [R=301,L]
+    RewriteCond %{HTTP_HOST} ^www\.matejkadlec\.cz [NC] 
+    RewriteRule ^(.*)$ https://matejkadlec.cz/$1 [L,R=301]
 
     RewriteCond %{HTTP_REFERER} !^$
     RewriteCond %{HTTP_REFERER} !^https?://%{HTTP_HOST} [NC]
     RewriteRule \.(ico|png|jpe?g|gif|webp|svg)$ - [F,L]
 
+    RewriteRule ^index(?:\.html)?/?$ / [R=301,L]
     RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
-    RewriteRule ^ /%1 [NC,L,R]
+    RewriteRule ^ /%1 [NC,L,R=301]
+
     RewriteCond %{REQUEST_FILENAME}.html -f
     RewriteRule ^ %{REQUEST_URI}.html [NC,L]
 </IfModule>
