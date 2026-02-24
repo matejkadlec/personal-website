@@ -20,7 +20,27 @@
       content="Freelance Developer based in Opava, Czechia. Specializing in Python, Django, and web development. Creating modern, efficient applications and websites."
     />
 
-    <link rel="canonical" href="https://www.matejkadlec.cz/" />
+    <link rel="canonical" href="https://matejkadlec.cz/" />
+    <script>
+      (() => {
+        const host = window.location.hostname;
+        const isCanonicalHost =
+          host === "matejkadlec.cz" ||
+          host === "www.matejkadlec.cz" ||
+          host.endsWith(".matejkadlec.cz");
+        if (!isCanonicalHost) return;
+        const applyCleanHrefs = () => {
+          document.querySelectorAll("a[data-clean-href]").forEach((a) => {
+            a.setAttribute("href", a.dataset.cleanHref);
+          });
+        };
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", applyCleanHrefs);
+        } else {
+          applyCleanHrefs();
+        }
+      })();
+    </script>
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -85,13 +105,13 @@
       >
         <li class="icon-box active">
           <i class="fa fa-home"></i>
-          <a href="index.html">
+          <a href="index.html" data-clean-href="/">
             <h2>Home</h2>
           </a>
         </li>
         <li class="icon-box">
           <i class="fa fa-user"></i>
-          <a href="about-me.html">
+          <a href="about-me.html" data-clean-href="/about-me">
             <h2>About&nbspMe</h2>
           </a>
         </li>
@@ -106,12 +126,12 @@
           <span></span>
           <ul class="list-unstyled" id="menu">
             <li class="active">
-              <a href="index.html"
+              <a href="index.html" data-clean-href="/"
                 ><i class="fa fa-home"></i><span>Home</span></a
               >
             </li>
             <li>
-              <a href="about-me.html"
+              <a href="about-me.html" data-clean-href="/about-me"
                 ><i class="fa fa-user"></i><span>About Me</span></a
               >
             </li>
@@ -164,7 +184,7 @@
               to see my projects, most of them are MIT licensed and I welcome
               any collaboratos!
             </p>
-            <a class="button" href="about-me.html">
+            <a class="button" href="about-me.html" data-clean-href="/about-me">
               <span class="button-text">MORE ABOUT ME</span>
               <span class="button-icon fa fa-arrow-right"></span>
             </a>

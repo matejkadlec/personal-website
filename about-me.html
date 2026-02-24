@@ -11,7 +11,7 @@
     />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Matěj Kadlec | Freelance Developer" />
+    <meta property="og:title" content="Matěj Kadlec | About Me" />
     <meta property="og:image" content="img/portrait.jpg" />
     <meta property="og:image:type" content="image/jpg" />
     <meta property="og:site_name" content="matejkadlec.cz" />
@@ -20,7 +20,27 @@
       content="Freelance Developer based in Opava, Czechia. Specializing in Python, Django, and web development. Creating modern, efficient applications and websites."
     />
 
-    <link rel="canonical" href="https://www.matejkadlec.cz/" />
+    <link rel="canonical" href="https://matejkadlec.cz/about-me" />
+    <script>
+      (() => {
+        const host = window.location.hostname;
+        const isCanonicalHost =
+          host === "matejkadlec.cz" ||
+          host === "www.matejkadlec.cz" ||
+          host.endsWith(".matejkadlec.cz");
+        if (!isCanonicalHost) return;
+        const applyCleanHrefs = () => {
+          document.querySelectorAll("a[data-clean-href]").forEach((a) => {
+            a.setAttribute("href", a.dataset.cleanHref);
+          });
+        };
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", applyCleanHrefs);
+        } else {
+          applyCleanHrefs();
+        }
+      })();
+    </script>
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -84,13 +104,13 @@
       >
         <li class="icon-box">
           <i class="fa fa-home"></i>
-          <a href="index.html">
+          <a href="index.html" data-clean-href="/">
             <h2>Home</h2>
           </a>
         </li>
         <li class="icon-box active">
           <i class="fa fa-user"></i>
-          <a href="about-me.html">
+          <a href="about-me.html" data-clean-href="/about-me">
             <h2>About&nbspMe</h2>
           </a>
         </li>
@@ -103,12 +123,12 @@
           <span></span>
           <ul class="list-unstyled" id="menu">
             <li>
-              <a href="index.html"
+              <a href="index.html" data-clean-href="/"
                 ><i class="fa fa-home"></i><span>Home</span></a
               >
             </li>
             <li class="active">
-              <a href="about-me.html"
+              <a href="about-me.html" data-clean-href="/about-me"
                 ><i class="fa fa-user"></i><span>About Me</span></a
               >
             </li>
