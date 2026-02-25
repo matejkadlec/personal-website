@@ -9,10 +9,12 @@ AddType image/jpeg .jpg
     RewriteRule ^(.*)$ https://matejkadlec.cz/$1 [L,R=301]
 
     RewriteCond %{HTTP_REFERER} !^$
-    RewriteCond %{HTTP_REFERER} !^https?://%{HTTP_HOST} [NC]
+    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?matejkadlec\.cz [NC]
     RewriteRule \.(ico|png|jpe?g|gif|webp|svg)$ - [F,L]
 
+    RewriteRule ^favicon\.ico$ /assets/img/favicon/favicon.ico [L]
     RewriteRule ^index(?:\.html)?/?$ / [R=301,L]
+    RewriteRule ^o-mne/?$ /about-me.html [NC,L]
     RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
     RewriteRule ^ /%1 [NC,L,R=301]
 
@@ -27,7 +29,7 @@ AddType image/jpeg .jpg
 </IfModule>
 
 <IfModule mod_headers.c>
-    <Files "favicon.ico">
+    <FilesMatch "^favicon\.ico$">
         Header set Cache-Control "public, max-age=31536000"
-    </Files>
+    </FilesMatch>
 </IfModule>

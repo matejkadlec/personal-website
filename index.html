@@ -12,7 +12,7 @@
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Matěj Kadlec | Freelance Developer" />
-    <meta property="og:image" content="img/portrait.jpg" />
+    <meta property="og:image" content="assets/img/portrait.jpg" />
     <meta property="og:image:type" content="image/jpg" />
     <meta property="og:site_name" content="matejkadlec.cz" />
     <meta
@@ -44,21 +44,28 @@
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href="img/apple-touch-icon.png"
+      href="assets/img/favicon/apple-touch-icon.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="img/favicon-32x32.png"
+      href="assets/img/favicon/favicon-32x32.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="img/favicon-16x16.png"
+      href="assets/img/favicon/favicon-16x16.png"
     />
-    <link rel="manifest" href="/manifest.json" />
+    <script>
+      if (window.location.protocol !== "file:") {
+        const manifestLink = document.createElement("link");
+        manifestLink.rel = "manifest";
+        manifestLink.href = "/manifest.json";
+        document.head.appendChild(manifestLink);
+      }
+    </script>
 
     <!-- Template Google Fonts -->
     <link
@@ -71,15 +78,15 @@
     />
 
     <!-- Template CSS Files -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/preloader.min.css" rel="stylesheet" />
-    <link href="css/circle.css" rel="stylesheet" />
-    <link href="css/font-awesome.min.css" rel="stylesheet" />
-    <link href="css/fm.revealator.jquery.min.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/preloader.min.css" rel="stylesheet" />
+    <link href="assets/css/circle.css" rel="stylesheet" />
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="assets/css/fm.revealator.jquery.min.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
 
     <!-- Modernizr JS File -->
-    <script src="js/modernizr.custom.js"></script>
+    <script src="assets/js/modernizr.custom.js"></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -105,14 +112,18 @@
       >
         <li class="icon-box active">
           <i class="fa fa-home"></i>
-          <a href="index.html" data-clean-href="/">
-            <h2>Home</h2>
+          <a href="index.html" data-clean-href="/" data-i18n-href="route.home">
+            <h2 data-i18n="common.nav.home">Home</h2>
           </a>
         </li>
         <li class="icon-box">
           <i class="fa fa-user"></i>
-          <a href="about-me.html" data-clean-href="/about-me">
-            <h2>About&nbspMe</h2>
+          <a
+            href="about-me.html"
+            data-clean-href="/about-me"
+            data-i18n-href="route.about"
+          >
+            <h2 data-i18n="common.nav.about">About Me</h2>
           </a>
         </li>
       </ul>
@@ -126,19 +137,59 @@
           <span></span>
           <ul class="list-unstyled" id="menu">
             <li class="active">
-              <a href="index.html" data-clean-href="/"
-                ><i class="fa fa-home"></i><span>Home</span></a
+              <a
+                href="index.html"
+                data-clean-href="/"
+                data-i18n-href="route.home"
+                ><i class="fa fa-home"></i
+                ><span data-i18n="common.nav.home">Home</span></a
               >
             </li>
             <li>
-              <a href="about-me.html" data-clean-href="/about-me"
-                ><i class="fa fa-user"></i><span>About Me</span></a
+              <a
+                href="about-me.html"
+                data-clean-href="/about-me"
+                data-i18n-href="route.about"
+                ><i class="fa fa-user"></i
+                ><span data-i18n="common.nav.about">About Me</span></a
               >
             </li>
           </ul>
         </div>
       </nav>
       <!-- Mobile Menu Ends -->
+      <div id="lang-switcher" aria-label="Language switch">
+        <button
+          id="lang-cs"
+          class="lang-option"
+          data-lang="cs"
+          type="button"
+          aria-pressed="false"
+          title="Přepnout do češtiny"
+          data-i18n-title="common.lang.cs.title"
+        >
+          <img
+            src="assets/img/czech_flag.png"
+            alt="Czech language"
+            data-i18n-alt="common.lang.cs.alt"
+          />
+        </button>
+        <button
+          id="lang-en"
+          class="lang-option"
+          data-lang="en"
+          type="button"
+          aria-pressed="true"
+          title="Switch to English"
+          data-i18n-title="common.lang.en.title"
+        >
+          <img
+            src="assets/img/english_flag.png"
+            alt="English language"
+            data-i18n-alt="common.lang.en.alt"
+          />
+        </button>
+      </div>
     </header>
     <!-- Header Ends -->
     <!-- Main Content Starts -->
@@ -153,39 +204,67 @@
         >
           <div>
             <img
-              src="img/portrait.jpg"
+              src="assets/img/portrait.jpg"
               class="img-fluid main-img-mobile d-none d-sm-block d-lg-none"
               alt="my picture"
+              data-i18n-alt="home.hero.imageAlt"
             />
-            <h1 class="text-uppercase poppins-font">
+            <h1
+              class="text-uppercase poppins-font"
+              data-i18n="home.hero.title"
+              data-i18n-html="true"
+            >
               I'm Matěj Kadlec <span>and I'm a freelance developer</span>
             </h1>
             <p class="open-sans-font text-align-left">
-              I'm a 25-year-old developer with over 5 years of experience, based
-              in Opava, Czechia. I studied computer science at VSB - Technical
-              University of Ostrava, and I'm currently working remotely as a
-              Full-Stack Software Engineer for DHL, focusing on Python and the
-              Django framework.<br /><br />My background spans various IT
-              fields, including roles as an IT article editor, QA engineer, web
-              developer, BE developer, and ETL developer. I also have experience
-              with MS Azure and other technologies, which you can further
-              explore in my
-              <a class="inline-link" href="CV_Matej_Kadlec.pdf" download>CV</a>.
-              <br /><br />Additionally, I engage in freelance or personal side
-              projects, such as developing Python web and desktop applications,
-              AutoHotKey automatization scripts, AddOns for World of Warcraft
-              and more. Visit my
+              <span data-i18n="home.hero.p1"
+                >I'm a 25-year-old developer with over 5 years of experience,
+                based in Opava, Czechia. I studied computer science at VSB -
+                Technical University of Ostrava, and I'm currently working
+                remotely as a Full-Stack Software Engineer for DHL, focusing on
+                Python and the Django framework.</span
+              ><br /><br /><span data-i18n="home.hero.p2"
+                >My background spans various IT fields, including roles as an IT
+                article editor, QA engineer, web developer, BE developer, and
+                ETL developer. I also have experience with MS Azure and other
+                technologies, which you can further explore in my</span
+              >
+              <a
+                class="inline-link"
+                href="assets/cv/CV_Matej_Kadlec.pdf"
+                data-i18n-href="cv.file"
+                download=""
+                data-i18n="home.hero.cvLink"
+                >CV</a
+              >.<br /><br /><span data-i18n="home.hero.p3"
+                >Additionally, I engage in freelance or personal side projects,
+                such as developing Python web and desktop applications,
+                AutoHotKey automatization scripts, AddOns for World of Warcraft
+                and more. Visit my</span
+              >
               <a
                 class="inline-link"
                 href="https://github.com/matejkadlec"
                 target="_blank"
+                title="GitHub"
+                data-i18n="home.hero.github"
+                data-i18n-title="home.hero.github"
                 >GitHub</a
               >
-              to see my projects, most of them are MIT licensed and I welcome
-              any collaboratos!
+              <span data-i18n="home.hero.p4"
+                >to see my projects, most of them are MIT licensed and I welcome
+                any collaboratos!</span
+              >
             </p>
-            <a class="button" href="about-me.html" data-clean-href="/about-me">
-              <span class="button-text">MORE ABOUT ME</span>
+            <a
+              class="button"
+              href="about-me.html"
+              data-clean-href="/about-me"
+              data-i18n-href="route.about"
+            >
+              <span class="button-text" data-i18n="home.hero.moreButton"
+                >MORE ABOUT ME</span
+              >
               <span class="button-icon fa fa-arrow-right"></span>
             </a>
           </div>
@@ -195,11 +274,13 @@
     <!-- Main Content Ends -->
 
     <!-- Template JS Files -->
-    <script src="js/jquery-3.5.0.min.js"></script>
-    <script src="js/preloader.min.js"></script>
-    <script src="js/fm.revealator.jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/custom.js"></script>
+    <script src="assets/js/jquery-3.5.0.min.js"></script>
+    <script src="assets/js/preloader.min.js"></script>
+    <script src="assets/js/fm.revealator.jquery.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/translations.js"></script>
+    <script src="assets/js/i18n.js" defer></script>
   </body>
 </html>

@@ -482,6 +482,7 @@ body.light hr.separator {
   .header .icon-box h2 {
     font-size: 15px;
     font-weight: 500;
+    white-space: nowrap;
   }
 
   .header .icon-box a {
@@ -520,6 +521,7 @@ body.light hr.separator {
     text-transform: uppercase;
     padding: 0 25px 0 30px;
     height: 50px;
+    white-space: nowrap;
   }
 
   .header .icon-box a:hover h2 {
@@ -1314,7 +1316,7 @@ body.light hr.separator {
 
 @media (min-width: 1600px) {
   .home .home-details > div {
-    max-width: 600px;
+    max-width: 610px;
   }
 }
 
@@ -1792,7 +1794,9 @@ body.light hr.separator {
 .inline-link:hover {
   color: #ffbc1a;
   transition: 0.5s;
-} /* =================================================================== */
+}
+
+/* =================================================================== */
 /* YELLOW #ffb400
 ====================================================================== */
 
@@ -1927,10 +1931,36 @@ body.light.blog .page-link:hover,
   margin-top: 20px;
 }
 
+.footer-contact-grid {
+  position: relative;
+}
+
+.footer-logo-center {
+  position: absolute;
+  inset: 0;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.footer-logo-center img {
+  height: 80px;
+  width: auto;
+}
+
+#menu li a span {
+  white-space: nowrap;
+}
+
 /* Separator Section for Zebra Striping */
 .separator-section {
   background-color: #1a1a1a;
   border-top: 1px solid #333;
   border-bottom: 1px solid #333;
   width: 100%;
+}
+
+button:focus,
+button:focus-visible {
+  outline: none !important;
 }
