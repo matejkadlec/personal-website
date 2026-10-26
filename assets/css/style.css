@@ -1964,3 +1964,54 @@ button:focus,
 button:focus-visible {
   outline: none !important;
 }
+
+/* Language Switcher */
+#lang-switcher {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#lang-switcher .lang-option {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  line-height: 0;
+  opacity: 0.55;
+  transition: opacity 0.2s ease;
+}
+
+#lang-switcher .lang-option img {
+  display: block;
+  width: 40px;
+  height: auto;
+}
+
+#lang-switcher .lang-option[aria-pressed="true"] {
+  opacity: 1;
+  cursor: default;
+}
+
+#lang-switcher .lang-option[aria-pressed="false"] {
+  cursor: pointer;
+}
+
+#lang-switcher .lang-option[aria-pressed="false"]:hover {
+  opacity: 0.85;
+}
+
+@media (max-width: 991.98px) {
+  #lang-switcher {
+    left: 16px;
+    right: auto;
+    top: 16px;
+  }
+
+  #lang-switcher .lang-option img {
+    width: 32px;
+  }
+}

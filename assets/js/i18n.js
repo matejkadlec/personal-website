@@ -103,23 +103,6 @@
   }
 
   function getRouteKeyForPath(pathname) {
-    if (isFileProtocol()) {
-      const fileName = getBasename(pathname).toLowerCase();
-
-      if (!fileName || fileName === "index" || fileName === "index.html") {
-        return "route.home";
-      }
-
-      if (
-        fileName === "about-me" ||
-        fileName === "about-me.html" ||
-        fileName === "o-mne" ||
-        fileName === "o-mne.html"
-      ) {
-        return "route.about";
-      }
-    }
-
     const normalizedPath = normalizePath(pathname);
 
     for (const routeKey of ROUTE_KEYS) {
@@ -239,32 +222,16 @@
   // the page has no localized route or the current URL already matches it.
   function getLocalizedRouteUrl(lang) {
     const routeKey = getRouteKeyForPath(window.location.pathname);
+    const localizedPath = routeKey ? getTranslationByLang(lang, routeKey) : "";
 
-    if (!routeKey) {
+    if (
+      !localizedPath ||
+      normalizePath(localizedPath) === normalizePath(window.location.pathname)
+    ) {
       return null;
     }
 
-    const localizedPath = isFileProtocol()
-      ? FILE_ROUTE_FALLBACK[routeKey] || getTranslationByLang(lang, routeKey)
-      : getTranslationByLang(lang, routeKey);
-
-    if (!localizedPath) {
-      return null;
-    }
-
-    if (isFileProtocol()) {
-      const currentFile = (getBasename(window.location.pathname) || "index.html").toLowerCase();
-      const targetFile = (getBasename(localizedPath) || "index.html").toLowerCase();
-
-      if (currentFile === targetFile) {
-        return null;
-      }
-    } else if (normalizePath(localizedPath) === normalizePath(window.location.pathname)) {
-      return null;
-    }
-
-    const base = isFileProtocol() ? window.location.href : window.location.origin;
-    const targetUrl = new URL(localizedPath, base);
+    const targetUrl = new URL(localizedPath, window.location.origin);
     targetUrl.search = window.location.search;
     targetUrl.hash = window.location.hash;
 
@@ -273,7 +240,7 @@
 
   // Both routes of a page are served by the same HTML file, so the address
   // bar can switch to the localized route (e.g. /about-me -> /o-mne) without
-  // a reload.
+  // a reload. Local file:// previews keep their .html file names.
   function replaceWithLocalizedRoute(lang) {
     if (isFileProtocol()) {
       return;
@@ -316,79 +283,16 @@
     });
   }
 
-  function injectSwitcherStyles() {
-    if (document.getElementById("lang-switcher-style")) {
-      return;
-    }
-
-    const style = document.createElement("style");
-    style.id = "lang-switcher-style";
-    style.textContent = `
-      #lang-switcher {
-        position: fixed;
-        top: 16px;
-        right: 16px;
-        z-index: 1100;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      #lang-switcher .lang-option {
-        background: transparent;
-        border: 0;
-        padding: 0;
-        line-height: 0;
-        opacity: 0.55;
-        transition: opacity 0.2s ease;
-      }
-      #lang-switcher .lang-option img {
-        display: block;
-        width: 40px;
-        height: auto;
-      }
-      #lang-switcher .lang-option[aria-pressed="true"] {
-        opacity: 1;
-        cursor: default;
-      }
-      #lang-switcher .lang-option[aria-pressed="false"] {
-        cursor: pointer;
-      }
-      #lang-switcher .lang-option[aria-pressed="false"]:hover {
-        opacity: 0.85;
-      }
-      @media (max-width: 991.98px) {
-        #lang-switcher {
-          left: 16px;
-          right: auto;
-          top: 16px;
-        }
-        #lang-switcher .lang-option img {
-          width: 32px;
-        }
-      }
-    `;
-
-    document.head.appendChild(style);
-  }
-
   function initI18n() {
     if (!window.TRANSLATIONS) {
       return;
     }
 
-    injectSwitcherStyles();
     attachSwitcherHandlers();
     clearLegacyLang();
 
     setLang(detectDefaultLang());
   }
-
-  window.initI18n = initI18n;
-  window.getSavedLang = getSavedLang;
-  window.saveLang = saveLang;
-  window.detectDefaultLang = detectDefaultLang;
-  window.setLang = setLang;
-  window.translatePage = translatePage;
 
   document.addEventListener("DOMContentLoaded", initI18n);
 })();
