@@ -13,10 +13,6 @@ AddType image/jpeg .jpg
     RewriteCond %{REQUEST_SCHEME} =http
     RewriteRule ^ https://matejkadlec.cz%{REQUEST_URI} [L,R=301]
 
-    RewriteCond %{HTTP_REFERER} !^$
-    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?matejkadlec\.cz [NC]
-    RewriteRule \.(ico|png|jpe?g|gif|webp|svg)$ - [F,L]
-
     # Former portrait URL (published as og:image and in structured data)
     RewriteRule ^assets/img/portrait\.png$ /assets/img/matej-kadlec.jpg [L,R=301]
 

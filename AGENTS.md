@@ -60,18 +60,13 @@ Production is Apache 2.4 behind an OpenResty proxy that terminates TLS.
 - `/index.html` -> `/`, `/page.html` -> `/page`, trailing slashes are dropped.
 - `/o-mne` is served by `about-me.html`; extensionless top-level paths are
   served from the matching `.html` file.
-- Images requested with a foreign `Referer` get 403 (hotlink protection).
 - A broken `.htaccess` takes the whole site down (500), so test changes on a
   local Apache 2.4 before deploying. Probe it with curl:
-  - the clean-URL, `.html`, trailing-slash, `/o-mne` and hotlink rules don't
-    check the host, so any Host (e.g. localhost) works. curl sends no
-    `Referer`, so images are served; add a foreign one
-    (`-H 'Referer: https://example.com/'`) to see the hotlink 403;
+  - the clean-URL, `.html`, trailing-slash and `/o-mne` rules don't check the
+    host, so any Host (e.g. localhost) works;
   - the canonical redirects only fire for `-H 'Host: www.matejkadlec.cz'` and,
     on plain http, `-H 'Host: matejkadlec.cz'` (every request then 301s to
-    https), so test them separately;
-  - in a browser on localhost, images get 403 from the hotlink rule by design
-    (the Referer is not matejkadlec.cz).
+    https), so test them separately.
 
 ## SEO
 
