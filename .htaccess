@@ -5,8 +5,13 @@ AddType image/jpeg .jpg
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    RewriteCond %{HTTP_HOST} ^www\.matejkadlec\.cz [NC] 
+    # Canonical origin is https://matejkadlec.cz (no www, no plain HTTP)
+    RewriteCond %{HTTP_HOST} ^www\.matejkadlec\.cz [NC]
     RewriteRule ^(.*)$ https://matejkadlec.cz/$1 [L,R=301]
+
+    RewriteCond %{HTTP_HOST} ^matejkadlec\.cz$ [NC]
+    RewriteCond %{REQUEST_SCHEME} =http
+    RewriteRule ^ https://matejkadlec.cz%{REQUEST_URI} [L,R=301]
 
     RewriteCond %{HTTP_REFERER} !^$
     RewriteCond %{HTTP_REFERER} !^https?://(www\.)?matejkadlec\.cz [NC]
@@ -14,12 +19,18 @@ AddType image/jpeg .jpg
 
     RewriteRule ^favicon\.ico$ /assets/img/favicon/favicon.ico [L]
     RewriteRule ^index(?:\.html)?/?$ / [R=301,L]
-    RewriteRule ^o-mne/?$ /about-me.html [NC,L]
     RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
     RewriteRule ^ /%1 [NC,L,R=301]
 
+    # Drop trailing slashes from non-directory URLs (/about-me/ -> /about-me)
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.+)/$ /$1 [L,R=301]
+
+    RewriteRule ^o-mne/?$ /about-me.html [NC,L]
+
+    # Serve extensionless top-level pages from their .html files
     RewriteCond %{REQUEST_FILENAME}.html -f
-    RewriteRule ^ %{REQUEST_URI}.html [NC,L]
+    RewriteRule ^[^/]+$ %{REQUEST_URI}.html [NC,L]
 </IfModule>
 
 <IfModule mod_expires.c>
