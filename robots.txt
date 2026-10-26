@@ -1,3 +1,4 @@
 User-agent: *
 Disallow:
+
 Sitemap: https://matejkadlec.cz/sitemap.xml

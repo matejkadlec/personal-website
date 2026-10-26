@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
         <loc>https://matejkadlec.cz/</loc>
-        <lastmod>2026-01-17T00:00:00+00:00</lastmod>
-        <priority>1.00</priority>
+        <lastmod>2026-10-26</lastmod>
     </url>
 
     <url>
         <loc>https://matejkadlec.cz/about-me</loc>
-        <lastmod>2026-01-17T00:00:00+00:00</lastmod>
-        <priority>0.80</priority>
+        <lastmod>2026-10-26</lastmod>
     </url>
 
     <url>
         <loc>https://matejkadlec.cz/assets/cv/CV_Matej_Kadlec.pdf</loc>
-        <lastmod>2026-01-17T00:00:00+00:00</lastmod>
-        <priority>0.80</priority>
+        <lastmod>2026-01-17</lastmod>
+    </url>
+
+    <url>
+        <loc>https://matejkadlec.cz/assets/cv/CV_Mat%C4%9Bj_Kadlec.pdf</loc>
+        <lastmod>2026-02-25</lastmod>
     </url>
 
 </urlset>
