@@ -1,0 +1,5 @@
+# Vendor files (kept as shipped)
+*.min.css
+*.min.js
+assets/css/circle.css
+assets/fonts/
