@@ -18,7 +18,7 @@ my experience, education and skills, with links to my CV, GitHub and LinkedIn.
   (Czech browsers get Czech, everyone else English) and can switch with the
   flags; a manual choice is remembered. The CV download follows the language.
 - **Lightweight** – plain HTML, CSS and vanilla JavaScript: no JavaScript
-  framework, no build step and about 8 KB of JavaScript.
+  framework, no build step and about 9 KB of JavaScript.
 - **SEO-friendly** – canonical URLs, hreflang links between the language
   versions, Open Graph and X cards, JSON-LD structured data (`Person`,
   `WebSite`, `ProfilePage` with breadcrumbs) and a sitemap.
@@ -36,55 +36,6 @@ my experience, education and skills, with links to my CV, GitHub and LinkedIn.
 - **Fonts:** Poppins and Open Sans from Google Fonts
 - **Hosting:** Apache 2.4 – `.htaccess` handles clean URLs, redirects and
   caching
-
-## Project structure
-
-```
-.
-├── index.html        # Home page, English (/)
-├── about-me.html     # About page, English (/about-me)
-├── cs.html           # Home page, Czech (/cs)
-├── o-mne.html        # About page, Czech (/o-mne)
-├── assets/
-│   ├── css/          # style.css + vendor styles
-│   ├── js/           # language redirect, animations, preloader
-│   ├── img/          # portrait, logo, flags, favicons
-│   ├── cv/           # CV in English and Czech (PDF)
-│   └── fonts/        # Font Awesome webfonts
-├── .htaccess         # Redirects, clean URLs, cache headers
-├── manifest.json     # Web app manifest
-├── sitemap.xml
-└── robots.txt
-```
-
-## Running locally
-
-There is no build step and there are no dependencies. Open any of the HTML files
-directly in a browser, or use a static server that supports clean URLs
-(`/about-me`), for example (needs Node.js, serves on http://localhost:3000):
-
-```bash
-npx serve .
-```
-
-The redirects in `.htaccess` (HTTPS, `.html` and trailing slashes) only work on
-Apache.
-
-## Editing content
-
-- The texts live directly in the HTML files: English in `index.html` and
-  `about-me.html`, Czech in `cs.html` and `o-mne.html`. Edit both language
-  versions, including the page titles, meta descriptions and structured data
-  in `<head>`.
-- After changing a CSS or JS file, bump the `?v=` version in all four HTML
-  files so returning visitors get the new file.
-- More details (routing, SEO, caching, conventions) are in
-  [AGENTS.md](AGENTS.md).
-
-## Credits
-
-The design is based on the _Tunis – Personal Portfolio_ template by
-[celtano](https://themeforest.net/user/celtano).
 
 ## License
 
