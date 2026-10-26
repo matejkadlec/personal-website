@@ -11,9 +11,11 @@
     });
   }
 
+  // Like jQuery 3's ready(): in its own task after DOMContentLoaded (see
+  // onReady() in revealator.js for why the timing matters).
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("DOMContentLoaded", () => setTimeout(init));
   } else {
-    init();
+    setTimeout(init);
   }
 })();

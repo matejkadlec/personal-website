@@ -82,13 +82,22 @@
     }, REFRESH_DELAY_MS);
   }
 
-  ["scroll", "resize", "load"].forEach((eventName) => {
-    window.addEventListener(eventName, scheduleRefresh, { passive: true });
-  });
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", scheduleRefresh);
-  } else {
-    scheduleRefresh();
+  // Runs the callback like jQuery 3's ready(): in its own task after
+  // DOMContentLoaded. The timing matters: custom.js adds .no-transform the
+  // same way, and the slide-up transition only plays if the elements' initial
+  // styles were computed before that.
+  function onReady(callback) {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", () => setTimeout(callback));
+    } else {
+      setTimeout(callback);
+    }
   }
+
+  onReady(() => {
+    ["scroll", "resize", "load"].forEach((eventName) => {
+      window.addEventListener(eventName, scheduleRefresh, { passive: true });
+    });
+    onReady(scheduleRefresh);
+  });
 })();
