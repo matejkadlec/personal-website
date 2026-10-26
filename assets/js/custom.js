@@ -1,11 +1,19 @@
-(function ($) {
+(function () {
   "use strict";
 
-  $(document).ready(function () {
+  function init() {
     /* ----------------------------------------------------------- */
     /*  FIX REVEALATOR ISSUE AFTER PAGE LOADED
-        /* ----------------------------------------------------------- */
+    /* ----------------------------------------------------------- */
 
-    $(".revealator-delay1").addClass("no-transform");
-  });
-})(jQuery);
+    document.querySelectorAll(".revealator-delay1").forEach((element) => {
+      element.classList.add("no-transform");
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
