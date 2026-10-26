@@ -32,7 +32,8 @@ assets/fonts/           Font Awesome 4.7 webfonts
 
 - The static HTML is English. On `DOMContentLoaded`, `i18n.js` translates every
   element with `data-i18n` (text, or HTML if the string contains tags),
-  `data-i18n-title`, `data-i18n-alt` and `data-i18n-href`, using
+  `data-i18n-title`, `data-i18n-alt`, `data-i18n-aria-label` and
+  `data-i18n-href`, using
   `window.TRANSLATIONS` from `translations.js`.
 - Language choice: a language picked with the flags is stored in
   `localStorage.preferredLang`; otherwise a browser whose preferred language is

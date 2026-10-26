@@ -189,6 +189,7 @@
     applyTranslatedAttributes("title");
     applyTranslatedAttributes("alt");
     applyTranslatedAttributes("placeholder");
+    applyTranslatedAttributes("aria-label");
 
     document.querySelectorAll("a[data-i18n-href]").forEach((element) => {
       const key = element.getAttribute("data-i18n-href");

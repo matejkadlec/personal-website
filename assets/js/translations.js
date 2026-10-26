@@ -5,6 +5,7 @@ window.TRANSLATIONS = {
 
     "common.nav.home": "Home",
     "common.nav.about": "About me",
+    "common.lang.switcherLabel": "Language switch",
     "common.lang.cs.title": "Přepnout do češtiny",
     "common.lang.cs.alt": "Čeština",
     "common.lang.en.title": "Switch to English",
@@ -130,6 +131,7 @@ window.TRANSLATIONS = {
 
     "common.nav.home": "Domů",
     "common.nav.about": "O mně",
+    "common.lang.switcherLabel": "Přepínač jazyka",
     "common.lang.cs.title": "Přepnout do češtiny",
     "common.lang.cs.alt": "Čeština",
     "common.lang.en.title": "Switch to English",
