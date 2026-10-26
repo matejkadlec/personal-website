@@ -22,7 +22,8 @@ assets/css/*            Vendor CSS: Bootstrap, Font Awesome, circle.css (skill
                         charts), preloader, revealator (scroll animations)
 assets/js/lang.js       Redirect to the visitor's language, flag switcher
 assets/js/revealator.js Scroll reveal animations (vanilla port of a jQuery plugin)
-assets/js/custom.js     Removes the slide-up offset once the page is ready
+assets/js/custom.js     Removes the slide-up offset once the page is ready;
+                        home page scrolling on short desktop screens
 assets/js/preloader.min.js  Full-screen preloader until window load
 assets/img/             Portrait, logo, flags, favicons
 assets/cv/              CV PDFs (CV_Matej_Kadlec.pdf = EN, CV_Matěj_Kadlec.pdf = CS)
@@ -109,6 +110,13 @@ Production is Apache 2.4 behind an OpenResty proxy that terminates TLS.
 - No jQuery or other runtime dependencies; vanilla JS only. `revealator.js` and
   `custom.js` intentionally run their setup one task after `DOMContentLoaded`
   (like jQuery's `ready()`); otherwise the slide-up animation can be skipped.
+- Home page on desktops (>= 992px): the page itself never scrolls
+  (`body.home { overflow: hidden }`). `custom.js` toggles `.is-overflowing`
+  on the home section (`.container-home`) whenever the content is taller than
+  the screen (40px top/bottom padding; re-checked on resize) and adds
+  `.is-scrollable` after a fixed 1s, once the slide-up (0.1s delay + 0.6s) is
+  over; the section scrolls only with both classes, so no scrollbar flashes
+  during the animation. Keep the 1s in step with the animation.
 - Formatting: Prettier 3 with default options (`npx prettier@3 --check .`);
   vendor files are excluded in `.prettierignore`.
 - Validate HTML with the Nu HTML Checker when changing markup.
