@@ -33,8 +33,7 @@ assets/fonts/           Font Awesome 4.7 webfonts
 - The static HTML is English. On `DOMContentLoaded`, `i18n.js` translates every
   element with `data-i18n` (text, or HTML if the string contains tags),
   `data-i18n-title`, `data-i18n-alt`, `data-i18n-aria-label` and
-  `data-i18n-href`, using
-  `window.TRANSLATIONS` from `translations.js`.
+  `data-i18n-href`, using `window.TRANSLATIONS` from `translations.js`.
 - Language choice: a language picked with the flags is stored in
   `localStorage.preferredLang`; otherwise a browser whose preferred language is
   Czech (`navigator.languages[0]` starts with `cs`) gets Czech and every other
@@ -47,6 +46,9 @@ assets/fonts/           Font Awesome 4.7 webfonts
   - keep the static HTML identical to `translations.en` (crawlers and link
     previews read the static HTML);
   - CV links use the `cv.file` key, which also sets the `download` file name.
+- A skill percentage lives in four places: the `c100 pNN` class (circle.css
+  draws the arc from it) and the `about.skills.*.percent` text in the static
+  HTML, `en` and `cs`. The JSON-LD `knowsAbout` list also names the skills.
 
 ## Routing (.htaccess)
 
@@ -59,13 +61,18 @@ Production is Apache 2.4 behind an OpenResty proxy that terminates TLS.
   served from the matching `.html` file.
 - Images requested with a foreign `Referer` get 403 (hotlink protection).
 - A broken `.htaccess` takes the whole site down (500), so test changes on a
-  local Apache 2.4 before deploying.
+  local Apache 2.4 before deploying. Probe with
+  `curl -H 'Host: matejkadlec.cz'` (the www/HTTPS rules only fire for that
+  host; images also need `-H 'Referer: https://matejkadlec.cz/'`). In a
+  browser on localhost, images get 403 from the hotlink rule by design.
 
 ## SEO
 
 - Each page has a canonical URL, meta description, Open Graph/X tags and
   JSON-LD (`WebSite` + `Person`, plus `ProfilePage` on the About page). The
-  `Person` entity is duplicated in both pages; keep them in sync.
+  `WebSite` and `Person` entities are duplicated in both pages, and
+  `og:title`/`og:description` mirror `<title>`/the meta description; keep
+  them in sync.
 - Crawlers render the English version on every URL, so there are no hreflang
   links and `/o-mne` canonicalises to `/about-me`.
 - Update `<lastmod>` in `sitemap.xml` when a page or CV changes.
@@ -76,9 +83,14 @@ Production is Apache 2.4 behind an OpenResty proxy that terminates TLS.
 
 - HTML and PDFs are always revalidated; CSS/JS are cached for a month and are
   referenced with a `?v=YYYYMMDD` query. **When you change any CSS or JS file,
-  bump the `?v=` value in both HTML files.**
+  bump the `?v=` value in both HTML files** (to today's date, or add a suffix
+  such as `20261026b` if that value is already live).
 - Images (6 months for JPEG) and fonts are cached long-term: give a replaced
-  image a new file name instead of overwriting it.
+  image a new file name instead of overwriting it. The portrait's URL is used
+  in: the `<img>` in index.html (with width/height), the `style.css`
+  background (then bump `?v=`), `og:image` (+ width/height) and the JSON-LD
+  `Person.image` in both pages, and as the target of the `.htaccess` redirect
+  from the old `portrait.png` URL (keep that redirect).
 - Optimize images before adding them (the portrait is a quality-92 JPEG,
   842x842, with an sRGB profile).
 
@@ -89,15 +101,18 @@ Production is Apache 2.4 behind an OpenResty proxy that terminates TLS.
 - No jQuery or other runtime dependencies; vanilla JS only. `revealator.js` and
   `custom.js` intentionally run their setup one task after `DOMContentLoaded`
   (like jQuery's `ready()`); otherwise the slide-up animation can be skipped.
-- Formatting: Prettier (`prettier --check .`); see `.prettierrc.json` and
-  `.prettierignore`. Vendor files are not reformatted.
+- Formatting: Prettier 3 (`npx prettier@3 --check .`); see
+  `.prettierrc.json` and `.prettierignore`. Vendor files are not reformatted.
 - Validate HTML with the Nu HTML Checker when changing markup.
 
 ## Local preview
 
 - Open `index.html` directly (`file://`) — links switch to the `.html` files.
-- Or use a static server with clean URLs, e.g. `npx serve .` (`/o-mne` and the
-  `.htaccess` redirects only work on Apache).
+- Or use a static server with clean URLs, e.g. `npx serve .`. English
+  navigation works, but `/o-mne` (the Czech About link, or a reload after
+  switching to Czech on the About page) 404s there: it and the `.htaccess`
+  redirects only work on Apache. Check Czech via `file://` or by switching
+  in-page without following links.
 
 ## Deployment
 
