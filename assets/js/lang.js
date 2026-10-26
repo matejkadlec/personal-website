@@ -70,7 +70,8 @@
   }
 
   // Navigation within the site (e.g. a flag click) is never redirected, so
-  // switching works even when localStorage is blocked.
+  // switching works even when localStorage is blocked (not on file://,
+  // where browsers send no referrer).
   function cameFromThisSite() {
     try {
       return new URL(document.referrer).origin === window.location.origin;
@@ -84,7 +85,8 @@
 
     if (
       preferredLang === document.documentElement.lang ||
-      CRAWLER_PATTERN.test(navigator.userAgent) ||
+      // "CUBOT" is a phone brand whose browsers would match "bot"
+      CRAWLER_PATTERN.test(navigator.userAgent.replace(/cubot/gi, "")) ||
       cameFromThisSite()
     ) {
       return false;

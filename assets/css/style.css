@@ -928,11 +928,6 @@ hr.separator {
   width: 100%;
 }
 
-button:focus,
-button:focus-visible {
-  outline: none !important;
-}
-
 /* Language Switcher */
 #lang-switcher {
   position: fixed;
@@ -945,9 +940,6 @@ button:focus-visible {
 }
 
 #lang-switcher .lang-option {
-  background: transparent;
-  border: 0;
-  padding: 0;
   line-height: 0;
   opacity: 0.55;
   transition: opacity 0.2s ease;
@@ -970,6 +962,11 @@ button:focus-visible {
 
 #lang-switcher .lang-option:not([aria-current="page"]):hover {
   opacity: 0.85;
+}
+
+#lang-switcher .lang-option:focus-visible {
+  outline: 2px solid #ffb400;
+  outline-offset: 2px;
 }
 
 @media (max-width: 991.98px) {

@@ -43,7 +43,8 @@ assets/fonts/           Font Awesome 4.7 webfonts
   preferred language (`navigator.languages[0]`) starts with `cs`, else English.
   Never redirected: crawlers (user agent pattern in `lang.js`, so search
   engines index both versions) and navigation from within the site (so the
-  flags work even when localStorage is blocked).
+  flags work even when localStorage is blocked; not on `file://`, which has
+  no referrer).
 - The flags are links to the counterpart page; the current language has
   `aria-current="page"`, and clicking the other one stores the choice.
 - On `file://`, `lang.js` rewrites the root-relative page links (`/`,
