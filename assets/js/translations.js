@@ -6,14 +6,14 @@ window.TRANSLATIONS = {
     "common.nav.home": "Home",
     "common.nav.about": "About me",
     "common.lang.cs.title": "Přepnout do češtiny",
-    "common.lang.cs.alt": "Czech language",
+    "common.lang.cs.alt": "Čeština",
     "common.lang.en.title": "Switch to English",
-    "common.lang.en.alt": "English language",
+    "common.lang.en.alt": "English",
 
     "cv.button": "Download my CV",
     "cv.file": "assets/cv/CV_Matej_Kadlec.pdf",
 
-    "home.hero.imageAlt": "my picture",
+    "home.hero.imageAlt": "Portrait of Matěj Kadlec",
     "home.hero.title":
       "I'm Matěj Kadlec <span>and I'm a freelance developer</span>",
     "home.hero.p1":
@@ -118,7 +118,7 @@ window.TRANSLATIONS = {
     "about.skills.vscode.percent": "80%",
     "about.skills.vscode.label": "VS Code",
 
-    "about.footer.logoAlt": "Logo",
+    "about.footer.logoAlt": "Matěj Kadlec logo",
     "about.footer.linkedin": "My LinkedIn",
     "about.footer.github": "My GitHub",
     "about.footer.email": "info@matejkadlec.cz",
@@ -131,14 +131,14 @@ window.TRANSLATIONS = {
     "common.nav.home": "Domů",
     "common.nav.about": "O mně",
     "common.lang.cs.title": "Přepnout do češtiny",
-    "common.lang.cs.alt": "Czech language",
+    "common.lang.cs.alt": "Čeština",
     "common.lang.en.title": "Switch to English",
-    "common.lang.en.alt": "English language",
+    "common.lang.en.alt": "English",
 
     "cv.button": "Stáhnetě si mé CV",
     "cv.file": "assets/cv/CV_Matěj_Kadlec.pdf",
 
-    "home.hero.imageAlt": "moje fotka",
+    "home.hero.imageAlt": "Portrét Matěje Kadlece",
     "home.hero.title":
       "Jsem Matěj Kadlec <span>a jsem vývojář<br/>na volné noze</span>",
     "home.hero.p1":
@@ -242,7 +242,7 @@ window.TRANSLATIONS = {
     "about.skills.vscode.percent": "80%",
     "about.skills.vscode.label": "VS Code",
 
-    "about.footer.logoAlt": "Logo",
+    "about.footer.logoAlt": "Logo Matěje Kadlece",
     "about.footer.linkedin": "Můj LinkedIn",
     "about.footer.github": "Můj GitHub",
     "about.footer.email": "info@matejkadlec.cz",

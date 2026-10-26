@@ -235,52 +235,6 @@
     });
   }
 
-  function toAbsoluteUrl(pathValue) {
-    try {
-      const base = isFileProtocol() ? window.location.href : window.location.origin;
-      return new URL(pathValue, base).toString();
-    } catch (error) {
-      return window.location.href;
-    }
-  }
-
-  function upsertAlternateLink(lang, href) {
-    let link = document.head.querySelector(
-      `link[rel="alternate"][hreflang="${lang}"][data-i18n-alternate="true"]`
-    );
-
-    if (!link) {
-      link = document.createElement("link");
-      link.setAttribute("rel", "alternate");
-      link.setAttribute("hreflang", lang);
-      link.setAttribute("data-i18n-alternate", "true");
-      document.head.appendChild(link);
-    }
-
-    link.setAttribute("href", href);
-  }
-
-  function updateAlternateHreflangLinks() {
-    if (isFileProtocol()) {
-      return;
-    }
-
-    const routeKey = getRouteKeyForPath(window.location.pathname);
-
-    if (!routeKey) {
-      const currentUrl = toAbsoluteUrl(window.location.pathname);
-      upsertAlternateLink("en", currentUrl);
-      upsertAlternateLink("cs", currentUrl);
-      return;
-    }
-
-    const enHref = getTranslationByLang("en", routeKey);
-    const csHref = getTranslationByLang("cs", routeKey);
-
-    upsertAlternateLink("en", toAbsoluteUrl(enHref || window.location.pathname));
-    upsertAlternateLink("cs", toAbsoluteUrl(csHref || window.location.pathname));
-  }
-
   // Returns the URL of the current page in the given language, or null when
   // the page has no localized route or the current URL already matches it.
   function getLocalizedRouteUrl(lang) {
@@ -339,7 +293,6 @@
     document.documentElement.lang = normalizedLang;
     translatePage();
     updateSwitcherState();
-    updateAlternateHreflangLinks();
     replaceWithLocalizedRoute(normalizedLang);
 
     if (options.persist === true) {

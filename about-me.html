@@ -4,27 +4,47 @@
     <meta charset="utf-8" />
     <title>Matěj Kadlec | About Me</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="follow, index" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta
       name="description"
-      content="Freelance Developer based in Opava, Czechia. Specializing in Python, Django, and web development. Creating modern, efficient applications and websites."
+      content="Experience, education and skills of Matěj Kadlec, a Full-Stack Developer from Opava, Czechia, working with Python, Django, JavaScript and PostgreSQL."
     />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Matěj Kadlec | About Me" />
-    <meta property="og:image" content="assets/img/portrait.png" />
-    <meta property="og:image:type" content="image/jpg" />
+    <meta name="author" content="Matěj Kadlec" />
+    <link rel="canonical" href="https://matejkadlec.cz/about-me" />
+
+    <!-- Social previews (Open Graph, X) -->
+    <meta property="og:type" content="profile" />
+    <meta property="profile:first_name" content="Matěj" />
+    <meta property="profile:last_name" content="Kadlec" />
     <meta property="og:site_name" content="matejkadlec.cz" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://matejkadlec.cz/about-me" />
+    <meta property="og:title" content="Matěj Kadlec | About Me" />
     <meta
       property="og:description"
-      content="Freelance Developer based in Opava, Czechia. Specializing in Python, Django, and web development. Creating modern, efficient applications and websites."
+      content="Experience, education and skills of Matěj Kadlec, a Full-Stack Developer from Opava, Czechia, working with Python, Django, JavaScript and PostgreSQL."
     />
+    <meta
+      property="og:image"
+      content="https://matejkadlec.cz/assets/img/portrait.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="842" />
+    <meta property="og:image:height" content="842" />
+    <meta property="og:image:alt" content="Portrait of Matěj Kadlec" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@MatejKadleec" />
 
-    <link rel="canonical" href="https://matejkadlec.cz/about-me" />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
       href="assets/img/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="assets/img/favicon/android-chrome-192x192.png"
     />
     <link
       rel="icon"
@@ -70,14 +90,79 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Matěj Kadlec",
-        "url": "https://matejkadlec.cz",
-        "jobTitle": "Freelance Developer",
-        "sameAs": [
-          "https://www.linkedin.com/in/matejkadlec",
-          "https://www.instagram.com/matej_kadleec",
-          "https://x.com/MatejKadleec"
+        "@graph": [
+          {
+            "@type": "ProfilePage",
+            "@id": "https://matejkadlec.cz/about-me#profile",
+            "url": "https://matejkadlec.cz/about-me",
+            "name": "Matěj Kadlec | About Me",
+            "inLanguage": "en",
+            "isPartOf": { "@id": "https://matejkadlec.cz/#website" },
+            "mainEntity": { "@id": "https://matejkadlec.cz/#person" },
+            "breadcrumb": {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://matejkadlec.cz/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "About me",
+                  "item": "https://matejkadlec.cz/about-me"
+                }
+              ]
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://matejkadlec.cz/#website",
+            "url": "https://matejkadlec.cz/",
+            "name": "Matěj Kadlec",
+            "alternateName": "matejkadlec.cz",
+            "inLanguage": ["en", "cs"],
+            "publisher": { "@id": "https://matejkadlec.cz/#person" }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://matejkadlec.cz/#person",
+            "name": "Matěj Kadlec",
+            "url": "https://matejkadlec.cz/",
+            "image": "https://matejkadlec.cz/assets/img/portrait.png",
+            "jobTitle": "Freelance Developer",
+            "description": "Freelance Developer based in Opava, Czechia, specializing in Python, Django, and web development.",
+            "email": "mailto:info@matejkadlec.cz",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Opava",
+              "addressCountry": "CZ"
+            },
+            "alumniOf": {
+              "@type": "CollegeOrUniversity",
+              "name": "VSB - Technical University of Ostrava"
+            },
+            "knowsAbout": [
+              "Python",
+              "Django",
+              "JavaScript",
+              "PostgreSQL",
+              "HTML",
+              "CSS",
+              "Linux",
+              "Git",
+              "CI/CD",
+              "ETL"
+            ],
+            "sameAs": [
+              "https://www.linkedin.com/in/matejkadlec/",
+              "https://github.com/matejkadlec",
+              "https://www.instagram.com/matej_kadleec",
+              "https://x.com/MatejKadleec"
+            ]
+          }
         ]
       }
     </script>
@@ -128,6 +213,7 @@
       <div id="lang-switcher" aria-label="Language switch">
         <button
           id="lang-cs"
+          lang="cs"
           class="lang-option"
           data-lang="cs"
           type="button"
@@ -137,12 +223,13 @@
         >
           <img
             src="assets/img/czech_flag.png"
-            alt="Czech language"
+            alt="Čeština"
             data-i18n-alt="common.lang.cs.alt"
           />
         </button>
         <button
           id="lang-en"
+          lang="en"
           class="lang-option"
           data-lang="en"
           type="button"
@@ -152,7 +239,7 @@
         >
           <img
             src="assets/img/english_flag.png"
-            alt="English language"
+            alt="English"
             data-i18n-alt="common.lang.en.alt"
           />
         </button>
@@ -694,7 +781,7 @@
           <div class="col-12 text-center mb-4 d-lg-none">
             <img
               src="assets/img/logo.png"
-              alt="Logo"
+              alt="Matěj Kadlec logo"
               data-i18n-alt="about.footer.logoAlt"
               style="height: 80px; width: auto"
             />
@@ -706,6 +793,7 @@
                 <a
                   href="https://www.linkedin.com/in/matejkadlec/"
                   target="_blank"
+                  rel="me noopener"
                   title="My LinkedIn"
                   data-i18n-title="about.footer.linkedin"
                 >
@@ -719,6 +807,7 @@
                 <a
                   href="https://github.com/matejkadlec"
                   target="_blank"
+                  rel="me noopener"
                   title="My GitHub"
                   data-i18n-title="about.footer.github"
                 >
@@ -751,7 +840,7 @@
               <div class="d-none d-lg-flex footer-logo-center">
                 <img
                   src="assets/img/logo.png"
-                  alt="Logo"
+                  alt="Matěj Kadlec logo"
                   data-i18n-alt="about.footer.logoAlt"
                 />
               </div>
