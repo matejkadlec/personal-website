@@ -1,7 +1,11 @@
 (function () {
   "use strict";
 
-  const STORAGE_KEY = "lang";
+  // Only a language picked manually via the flags is stored; otherwise the
+  // browser language decides. "lang" is the key older versions used to store
+  // the auto-detected language too, so it is dropped to let detection apply.
+  const STORAGE_KEY = "preferredLang";
+  const LEGACY_STORAGE_KEY = "lang";
   const SUPPORTED_LANGS = ["en", "cs"];
   const ROUTE_KEYS = ["route.home", "route.about"];
   const FILE_ROUTE_FALLBACK = {
@@ -32,18 +36,22 @@
     }
   }
 
+  function clearLegacyLang() {
+    try {
+      localStorage.removeItem(LEGACY_STORAGE_KEY);
+    } catch (error) {
+      // Ignore storage errors (private mode, blocked storage, etc.)
+    }
+  }
+
+  // Czech browsers get Czech, every other browser language gets English.
+  function detectBrowserLang() {
+    const preferred = (navigator.languages && navigator.languages[0]) || navigator.language || "";
+    return preferred.toLowerCase().startsWith("cs") ? "cs" : "en";
+  }
+
   function detectDefaultLang() {
-    const savedLang = getSavedLang();
-    if (savedLang) {
-      return savedLang;
-    }
-
-    const browserLang = (navigator.language || "").toLowerCase();
-    if (browserLang.startsWith("cs")) {
-      return "cs";
-    }
-
-    return "en";
+    return getSavedLang() || detectBrowserLang();
   }
 
   function getTranslationByLang(lang, key) {
@@ -273,11 +281,13 @@
     upsertAlternateLink("cs", toAbsoluteUrl(csHref || window.location.pathname));
   }
 
-  function redirectToLocalizedRoute(lang) {
+  // Returns the URL of the current page in the given language, or null when
+  // the page has no localized route or the current URL already matches it.
+  function getLocalizedRouteUrl(lang) {
     const routeKey = getRouteKeyForPath(window.location.pathname);
 
     if (!routeKey) {
-      return;
+      return null;
     }
 
     const localizedPath = isFileProtocol()
@@ -285,7 +295,7 @@
       : getTranslationByLang(lang, routeKey);
 
     if (!localizedPath) {
-      return;
+      return null;
     }
 
     if (isFileProtocol()) {
@@ -293,10 +303,10 @@
       const targetFile = (getBasename(localizedPath) || "index.html").toLowerCase();
 
       if (currentFile === targetFile) {
-        return;
+        return null;
       }
     } else if (normalizePath(localizedPath) === normalizePath(window.location.pathname)) {
-      return;
+      return null;
     }
 
     const base = isFileProtocol() ? window.location.href : window.location.origin;
@@ -304,7 +314,22 @@
     targetUrl.search = window.location.search;
     targetUrl.hash = window.location.hash;
 
-    window.location.assign(targetUrl.toString());
+    return targetUrl.toString();
+  }
+
+  // Both routes of a page are served by the same HTML file, so the address
+  // bar can switch to the localized route (e.g. /about-me -> /o-mne) without
+  // a reload.
+  function replaceWithLocalizedRoute(lang) {
+    if (isFileProtocol()) {
+      return;
+    }
+
+    const targetUrl = getLocalizedRouteUrl(lang);
+
+    if (targetUrl) {
+      window.history.replaceState(window.history.state, "", targetUrl);
+    }
   }
 
   function setLang(lang, options = {}) {
@@ -313,12 +338,12 @@
     currentLang = normalizedLang;
     document.documentElement.lang = normalizedLang;
     translatePage();
-    saveLang(normalizedLang);
     updateSwitcherState();
     updateAlternateHreflangLinks();
+    replaceWithLocalizedRoute(normalizedLang);
 
-    if (options.redirect === true) {
-      redirectToLocalizedRoute(normalizedLang);
+    if (options.persist === true) {
+      saveLang(normalizedLang);
     }
   }
 
@@ -333,7 +358,7 @@
           return;
         }
 
-        setLang(nextLang, { redirect: true });
+        setLang(nextLang, { persist: true });
       });
     });
   }
@@ -400,9 +425,9 @@
 
     injectSwitcherStyles();
     attachSwitcherHandlers();
+    clearLegacyLang();
 
-    const defaultLang = detectDefaultLang();
-    setLang(defaultLang, { redirect: false });
+    setLang(detectDefaultLang());
   }
 
   window.initI18n = initI18n;
