@@ -22,8 +22,10 @@ AddType image/jpeg .jpg
 
     RewriteRule ^favicon\.ico$ /assets/img/favicon/favicon.ico [L]
     RewriteRule ^index(?:\.html)?/?$ / [R=301,L]
-    RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
-    RewriteRule ^ /%1 [NC,L,R=301]
+    # Strip .html from the path only (a ".html" in the query string, e.g.
+    # ?ref=page.html, must not trigger it); NE keeps %-escapes as they came
+    RewriteCond %{THE_REQUEST} \s/([^?\s]*?)\.html/?[?\s] [NC]
+    RewriteRule ^ /%1 [NE,L,R=301]
 
     # Drop trailing slashes from non-directory URLs (/about-me/ -> /about-me)
     RewriteCond %{REQUEST_FILENAME} !-d
