@@ -285,6 +285,7 @@ hr.separator {
 /*** Homepage ***/
 
 .home .color-block {
+  pointer-events: none;
   position: fixed;
   height: 200%;
   width: 100%;
@@ -294,6 +295,7 @@ hr.separator {
 }
 
 .home .bg {
+  pointer-events: none;
   background-image: url(../img/matej-kadlec.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -485,10 +487,11 @@ hr.separator {
 }
 
 @media (min-width: 992px) {
+  /* 100vw (not 100%): the text stays put when the section shows a
+     scrollbar */
   .home .home-details-container {
-    width: 100%;
+    width: 100vw;
     min-height: 100vh;
-    padding: 40px 0;
   }
 
   body.home {
@@ -496,17 +499,24 @@ hr.separator {
   }
 
   /* On short screens the content scrolls inside this section instead of
-     being cut off. custom.js enables the scrolling once the slide-up
-     animation is over (while it runs, the fixed portrait and colour block
-     overflow the transformed section and would show a scrollbar). */
+     being cut off. custom.js adds .is-scrollable when the content doesn't
+     fit, once the slide-up animation is over (while it runs, the fixed
+     portrait and colour block overflow the transformed section and would
+     show a scrollbar). */
+  /* 100% (= the viewport) rather than 100vh: a vh length would be animated
+     by the reveal transition when the window is resized */
   .home .container-home {
-    height: 100vh;
+    height: 100%;
     align-items: flex-start;
   }
 
   .home .container-home.is-scrollable {
     overflow-x: hidden;
     overflow-y: auto;
+  }
+
+  .home .container-home.is-scrollable .home-details-container {
+    padding: 40px 0;
   }
 }
 
@@ -622,6 +632,11 @@ hr.separator {
 
   #menuToggle input:checked ~ span:nth-last-child(2) {
     transform: rotate(-45deg) translate(2px, 4px);
+  }
+
+  /* Also visible while the open menu covers the outline above */
+  #menuToggle input:focus-visible ~ span {
+    background: #ffb400;
   }
 
   #menu {
@@ -978,5 +993,16 @@ hr.separator {
 
   #lang-switcher .lang-option img {
     width: 32px;
+  }
+}
+
+/* Very narrow phones: keep the centred About title clear of the flags */
+@media (max-width: 359px) {
+  .title-section h1 {
+    font-size: 22px;
+  }
+
+  #lang-switcher .lang-option img {
+    width: 28px;
   }
 }

@@ -12,10 +12,31 @@
 
     // Let the home section scroll on short screens (see style.css) once the
     // slide-up transition (0.1s delay + 0.6s) started above has finished.
-    const homeSection = document.querySelector(".home .container-home");
+    setTimeout(enableHomeScrolling, 1000);
+  }
 
-    if (homeSection) {
-      setTimeout(() => homeSection.classList.add("is-scrollable"), 1000);
+  // The section only becomes scrollable (and gets its padding) when the
+  // content doesn't fit, so screens it fits on look exactly as before.
+  function enableHomeScrolling() {
+    const section = document.querySelector(".home .container-home");
+    const content = section && section.querySelector(".home-details");
+
+    if (!content) {
+      return;
+    }
+
+    const update = () => {
+      section.classList.toggle(
+        "is-scrollable",
+        content.offsetHeight > section.clientHeight,
+      );
+    };
+
+    update();
+    window.addEventListener("resize", update);
+
+    if (window.ResizeObserver) {
+      new ResizeObserver(update).observe(content);
     }
   }
 
