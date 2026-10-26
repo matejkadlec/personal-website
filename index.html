@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en" style="background-color: #111">
   <head>
     <meta charset="utf-8" />
@@ -21,26 +21,6 @@
     />
 
     <link rel="canonical" href="https://matejkadlec.cz/" />
-    <script>
-      (() => {
-        const host = window.location.hostname;
-        const isCanonicalHost =
-          host === "matejkadlec.cz" ||
-          host === "www.matejkadlec.cz" ||
-          host.endsWith(".matejkadlec.cz");
-        if (!isCanonicalHost) return;
-        const applyCleanHrefs = () => {
-          document.querySelectorAll("a[data-clean-href]").forEach((a) => {
-            a.setAttribute("href", a.dataset.cleanHref);
-          });
-        };
-        if (document.readyState === "loading") {
-          document.addEventListener("DOMContentLoaded", applyCleanHrefs);
-        } else {
-          applyCleanHrefs();
-        }
-      })();
-    </script>
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -112,18 +92,14 @@
       >
         <li class="icon-box active">
           <i class="fa fa-home"></i>
-          <a href="index.html" data-clean-href="/" data-i18n-href="route.home">
+          <a href="/" data-i18n-href="route.home">
             <h2 data-i18n="common.nav.home">Home</h2>
           </a>
         </li>
         <li class="icon-box">
           <i class="fa fa-user"></i>
-          <a
-            href="about-me.html"
-            data-clean-href="/about-me"
-            data-i18n-href="route.about"
-          >
-            <h2 data-i18n="common.nav.about">About Me</h2>
+          <a href="/about-me" data-i18n-href="route.about">
+            <h2 data-i18n="common.nav.about">About me</h2>
           </a>
         </li>
       </ul>
@@ -137,21 +113,15 @@
           <span></span>
           <ul class="list-unstyled" id="menu">
             <li class="active">
-              <a
-                href="index.html"
-                data-clean-href="/"
-                data-i18n-href="route.home"
+              <a href="/" data-i18n-href="route.home"
                 ><i class="fa fa-home"></i
                 ><span data-i18n="common.nav.home">Home</span></a
               >
             </li>
             <li>
-              <a
-                href="about-me.html"
-                data-clean-href="/about-me"
-                data-i18n-href="route.about"
+              <a href="/about-me" data-i18n-href="route.about"
                 ><i class="fa fa-user"></i
-                ><span data-i18n="common.nav.about">About Me</span></a
+                ><span data-i18n="common.nav.about">About me</span></a
               >
             </li>
           </ul>
@@ -221,12 +191,12 @@
                 >I'm a 25-year-old developer with over 5 years of experience,
                 based in Opava, Czechia. I studied computer science at VSB -
                 Technical University of Ostrava, and I'm currently working
-                remotely as a Full-Stack Software Engineer for DHL, focusing on
-                Python and the Django framework.</span
+                remotely as a Full-Stack Developer for company DHL IT Services,
+                focusing on Python and the Django framework.</span
               ><br /><br /><span data-i18n="home.hero.p2"
                 >My background spans various IT fields, including roles as an IT
                 article editor, QA engineer, web developer, BE developer, and
-                ETL developer. I also have experience with MS Azure and other
+                ETL developer. I also have experience with a lot of other
                 technologies, which you can further explore in my</span
               >
               <a
@@ -256,12 +226,7 @@
                 any collaboratos!</span
               >
             </p>
-            <a
-              class="button"
-              href="about-me.html"
-              data-clean-href="/about-me"
-              data-i18n-href="route.about"
-            >
+            <a class="button" href="/about-me" data-i18n-href="route.about">
               <span class="button-text" data-i18n="home.hero.moreButton"
                 >MORE ABOUT ME</span
               >

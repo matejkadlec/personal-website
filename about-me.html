@@ -21,26 +21,6 @@
     />
 
     <link rel="canonical" href="https://matejkadlec.cz/about-me" />
-    <script>
-      (() => {
-        const host = window.location.hostname;
-        const isCanonicalHost =
-          host === "matejkadlec.cz" ||
-          host === "www.matejkadlec.cz" ||
-          host.endsWith(".matejkadlec.cz");
-        if (!isCanonicalHost) return;
-        const applyCleanHrefs = () => {
-          document.querySelectorAll("a[data-clean-href]").forEach((a) => {
-            a.setAttribute("href", a.dataset.cleanHref);
-          });
-        };
-        if (document.readyState === "loading") {
-          document.addEventListener("DOMContentLoaded", applyCleanHrefs);
-        } else {
-          applyCleanHrefs();
-        }
-      })();
-    </script>
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -111,18 +91,14 @@
       >
         <li class="icon-box">
           <i class="fa fa-home"></i>
-          <a href="index.html" data-clean-href="/" data-i18n-href="route.home">
+          <a href="/" data-i18n-href="route.home">
             <h2 data-i18n="common.nav.home">Home</h2>
           </a>
         </li>
         <li class="icon-box active">
           <i class="fa fa-user"></i>
-          <a
-            href="about-me.html"
-            data-clean-href="/about-me"
-            data-i18n-href="route.about"
-          >
-            <h2 data-i18n="common.nav.about">About Me</h2>
+          <a href="/about-me" data-i18n-href="route.about">
+            <h2 data-i18n="common.nav.about">About me</h2>
           </a>
         </li>
       </ul>
@@ -134,21 +110,15 @@
           <span></span>
           <ul class="list-unstyled" id="menu">
             <li>
-              <a
-                href="index.html"
-                data-clean-href="/"
-                data-i18n-href="route.home"
+              <a href="/" data-i18n-href="route.home"
                 ><i class="fa fa-home"></i
                 ><span data-i18n="common.nav.home">Home</span></a
               >
             </li>
             <li class="active">
-              <a
-                href="about-me.html"
-                data-clean-href="/about-me"
-                data-i18n-href="route.about"
+              <a href="/about-me" data-i18n-href="route.about"
                 ><i class="fa fa-user"></i
-                ><span data-i18n="common.nav.about">About Me</span></a
+                ><span data-i18n="common.nav.about">About me</span></a
               >
             </li>
           </ul>
@@ -232,15 +202,16 @@
                     data-i18n="about.experience.job1.title"
                     data-i18n-html="true"
                   >
-                    Software Engineer
+                    Full-Stack Developer
                     <span class="place open-sans-font">DHL IT Services</span>
                   </h5>
                   <p
                     class="open-sans-font"
                     data-i18n="about.experience.job1.desc"
                   >
-                    Working as a Python (Django) developer for company DHL. In
-                    addition, I work on various side projects.
+                    Working as a Full-Stack Developer using Python (Django),
+                    JavaScript, and PostgreSQL, responsible for software
+                    architecture, implementation, and QA.
                   </p>
                 </li>
                 <li>
@@ -461,7 +432,7 @@
                       data-i18n="about.education.item1.title"
                       data-i18n-html="true"
                     >
-                      Bachelor's Degree
+                      Bachelor's studies
                       <span class="place open-sans-font"
                         >VSB - Technical University of Ostrava</span
                       >
@@ -504,7 +475,7 @@
                       data-i18n="about.education.item2.field"
                       data-i18n-html="true"
                     >
-                      <b>Field of study:</b> Informatics
+                      <b>Field of study:</b> Economics and informatics
                     </p>
                   </li>
                 </ul>
@@ -735,12 +706,12 @@
                 <a
                   href="https://www.linkedin.com/in/matejkadlec/"
                   target="_blank"
-                  title="LinkedIn"
+                  title="My LinkedIn"
                   data-i18n-title="about.footer.linkedin"
                 >
                   <i class="fa fa-linkedin fa-2x"></i>
                   <div class="d-block mt-2" data-i18n="about.footer.linkedin">
-                    LinkedIn
+                    My LinkedIn
                   </div>
                 </a>
               </div>
@@ -748,24 +719,24 @@
                 <a
                   href="https://github.com/matejkadlec"
                   target="_blank"
-                  title="GitHub"
+                  title="My GitHub"
                   data-i18n-title="about.footer.github"
                 >
                   <i class="fa fa-github fa-2x"></i>
                   <div class="d-block mt-2" data-i18n="about.footer.github">
-                    GitHub
+                    My GitHub
                   </div>
                 </a>
               </div>
               <div class="col-6 text-center mb-4">
                 <a
                   href="mailto:info@matejkadlec.cz"
-                  title="Email"
+                  title="info@matejkadlec.cz"
                   data-i18n-title="about.footer.email"
                 >
                   <i class="fa fa-envelope-o fa-2x"></i>
                   <div class="d-block mt-2" data-i18n="about.footer.email">
-                    Email
+                    info@matejkadlec.cz
                   </div>
                 </a>
               </div>
@@ -788,7 +759,12 @@
           </div>
 
           <div class="col-12 text-center mt-4">
-            <a class="button" href="" data-i18n-href="cv.file" download="">
+            <a
+              class="button"
+              href="assets/cv/CV_Matej_Kadlec.pdf"
+              data-i18n-href="cv.file"
+              download=""
+            >
               <span class="button-text" data-i18n="cv.button"
                 >Download my CV</span
               >
