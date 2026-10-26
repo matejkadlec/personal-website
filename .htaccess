@@ -17,6 +17,9 @@ AddType image/jpeg .jpg
     RewriteCond %{HTTP_REFERER} !^https?://(www\.)?matejkadlec\.cz [NC]
     RewriteRule \.(ico|png|jpe?g|gif|webp|svg)$ - [F,L]
 
+    # Former portrait URL (published as og:image and in structured data)
+    RewriteRule ^assets/img/portrait\.png$ /assets/img/matej-kadlec.jpg [L,R=301]
+
     RewriteRule ^favicon\.ico$ /assets/img/favicon/favicon.ico [L]
     RewriteRule ^index(?:\.html)?/?$ / [R=301,L]
     RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
