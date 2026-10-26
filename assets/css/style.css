@@ -956,26 +956,30 @@ hr.separator {
 
 #lang-switcher .lang-option {
   line-height: 0;
-  opacity: 0.55;
-  transition: opacity 0.2s ease;
 }
 
+/* The dimming is on the image, so it doesn't fade the focus ring */
 #lang-switcher .lang-option img {
   display: block;
   width: 40px;
   height: auto;
+  opacity: 0.55;
+  transition: opacity 0.2s ease;
 }
 
 #lang-switcher .lang-option[aria-current="page"] {
-  opacity: 1;
   cursor: default;
+}
+
+#lang-switcher .lang-option[aria-current="page"] img {
+  opacity: 1;
 }
 
 #lang-switcher .lang-option:not([aria-current="page"]) {
   cursor: pointer;
 }
 
-#lang-switcher .lang-option:not([aria-current="page"]):hover {
+#lang-switcher .lang-option:not([aria-current="page"]):hover img {
   opacity: 0.85;
 }
 
