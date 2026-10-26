@@ -27,8 +27,6 @@ AddType image/jpeg .jpg
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.+)/$ /$1 [L,R=301]
 
-    RewriteRule ^o-mne/?$ /about-me.html [NC,L]
-
     # Serve extensionless top-level pages from their .html files
     RewriteCond %{REQUEST_FILENAME}.html -f
     RewriteRule ^[^/]+$ %{REQUEST_URI}.html [NC,L]

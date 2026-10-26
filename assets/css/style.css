@@ -959,16 +959,16 @@ button:focus-visible {
   height: auto;
 }
 
-#lang-switcher .lang-option[aria-pressed="true"] {
+#lang-switcher .lang-option[aria-current="page"] {
   opacity: 1;
   cursor: default;
 }
 
-#lang-switcher .lang-option[aria-pressed="false"] {
+#lang-switcher .lang-option:not([aria-current="page"]) {
   cursor: pointer;
 }
 
-#lang-switcher .lang-option[aria-pressed="false"]:hover {
+#lang-switcher .lang-option:not([aria-current="page"]):hover {
   opacity: 0.85;
 }
 

@@ -13,13 +13,15 @@ my experience, education and skills, with links to my CV, GitHub and LinkedIn.
 
 ## Features
 
-- **Bilingual (English / Czech)** – the language is picked from the browser
-  (Czech browsers get Czech, everyone else English) and can be switched with the
+- **Bilingual (English / Czech)** – every page exists in both languages, so
+  search engines index both. Visitors are sent to their browser's language
+  (Czech browsers get Czech, everyone else English) and can switch with the
   flags; a manual choice is remembered. The CV download follows the language.
 - **Lightweight** – plain HTML, CSS and vanilla JavaScript: no JavaScript
-  framework, no build step and about 25 KB of JavaScript.
-- **SEO-friendly** – canonical URLs, Open Graph and X cards, JSON-LD structured
-  data (`Person`, `WebSite`, `ProfilePage` with breadcrumbs) and a sitemap.
+  framework, no build step and about 8 KB of JavaScript.
+- **SEO-friendly** – canonical URLs, hreflang links between the language
+  versions, Open Graph and X cards, JSON-LD structured data (`Person`,
+  `WebSite`, `ProfilePage` with breadcrumbs) and a sitemap.
 - **Responsive** – a desktop layout with side navigation and a mobile layout
   with a slide-in menu, plus scroll reveal animations.
 - **Accessible** – semantic headings, descriptive alt texts and labelled
@@ -29,7 +31,7 @@ my experience, education and skills, with links to my CV, GitHub and LinkedIn.
 
 - **Markup & styles:** HTML5, CSS3, [Bootstrap 4](https://getbootstrap.com/)
   (grid and utilities), [Font Awesome 4](https://fontawesome.com/v4/)
-- **Scripts:** vanilla JavaScript (translations, language switcher, scroll
+- **Scripts:** vanilla JavaScript (language redirect and switcher, scroll
   animations, preloader)
 - **Fonts:** Poppins and Open Sans from Google Fonts
 - **Hosting:** Apache 2.4 – `.htaccess` handles clean URLs, redirects and
@@ -39,11 +41,13 @@ my experience, education and skills, with links to my CV, GitHub and LinkedIn.
 
 ```
 .
-├── index.html        # Home page (/)
-├── about-me.html     # About page (/about-me, Czech /o-mne)
+├── index.html        # Home page, English (/)
+├── about-me.html     # About page, English (/about-me)
+├── cs.html           # Home page, Czech (/cs)
+├── o-mne.html        # About page, Czech (/o-mne)
 ├── assets/
 │   ├── css/          # style.css + vendor styles
-│   ├── js/           # i18n, translations, animations
+│   ├── js/           # language redirect, animations, preloader
 │   ├── img/          # portrait, logo, flags, favicons
 │   ├── cv/           # CV in English and Czech (PDF)
 │   └── fonts/        # Font Awesome webfonts
@@ -55,28 +59,25 @@ my experience, education and skills, with links to my CV, GitHub and LinkedIn.
 
 ## Running locally
 
-There is no build step and there are no dependencies. Open `index.html` directly
-in a browser, or use a static server that supports clean URLs (`/about-me`),
-for example (needs Node.js, serves on http://localhost:3000):
+There is no build step and there are no dependencies. Open any of the HTML files
+directly in a browser, or use a static server that supports clean URLs
+(`/about-me`), for example (needs Node.js, serves on http://localhost:3000):
 
 ```bash
 npx serve .
 ```
 
-The Czech `/o-mne` URL and the redirects rely on Apache's `.htaccess`, so under
-`serve` the Czech About link (or a reload after switching to Czech there)
-returns 404. Check the Czech pages by opening the files directly or by switching
-in-page.
+The redirects in `.htaccess` (HTTPS, `.html` and trailing slashes) only work on
+Apache.
 
 ## Editing content
 
-- All visible texts live in `assets/js/translations.js`, in English and Czech.
-  Keep the static English text in the HTML files identical to the `en`
-  strings, because that is what search engines and link previews read.
-- Page titles, meta and Open Graph descriptions and the structured data are
-  English only and live in the HTML files.
-- After changing a CSS or JS file, bump the `?v=` version in both HTML files so
-  returning visitors get the new file.
+- The texts live directly in the HTML files: English in `index.html` and
+  `about-me.html`, Czech in `cs.html` and `o-mne.html`. Edit both language
+  versions, including the page titles, meta descriptions and structured data
+  in `<head>`.
+- After changing a CSS or JS file, bump the `?v=` version in all four HTML
+  files so returning visitors get the new file.
 - More details (routing, SEO, caching, conventions) are in
   [AGENTS.md](AGENTS.md).
 

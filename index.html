@@ -11,11 +11,16 @@
     />
     <meta name="author" content="Matěj Kadlec" />
     <link rel="canonical" href="https://matejkadlec.cz/" />
+    <link rel="alternate" hreflang="en" href="https://matejkadlec.cz/" />
+    <link rel="alternate" hreflang="cs" href="https://matejkadlec.cz/cs" />
+    <link rel="alternate" hreflang="x-default" href="https://matejkadlec.cz/" />
+    <script src="assets/js/lang.js?v=20261026"></script>
 
     <!-- Social previews (Open Graph, X) -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="matejkadlec.cz" />
     <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="cs_CZ" />
     <meta property="og:url" content="https://matejkadlec.cz/" />
     <meta property="og:title" content="Matěj Kadlec | Freelance Developer" />
     <meta
@@ -144,16 +149,14 @@
       >
         <li class="icon-box active">
           <i class="fa fa-home"></i>
-          <a href="/" data-i18n-href="route.home">
-            <span class="icon-label" data-i18n="common.nav.home">Home</span>
+          <a href="/">
+            <span class="icon-label">Home</span>
           </a>
         </li>
         <li class="icon-box">
           <i class="fa fa-user"></i>
-          <a href="/about-me" data-i18n-href="route.about">
-            <span class="icon-label" data-i18n="common.nav.about"
-              >About me</span
-            >
+          <a href="/about-me">
+            <span class="icon-label">About me</span>
           </a>
         </li>
       </ul>
@@ -167,59 +170,39 @@
           <span></span>
           <ul class="list-unstyled" id="menu">
             <li class="active">
-              <a href="/" data-i18n-href="route.home"
-                ><i class="fa fa-home"></i
-                ><span data-i18n="common.nav.home">Home</span></a
-              >
+              <a href="/"><i class="fa fa-home"></i><span>Home</span></a>
             </li>
             <li>
-              <a href="/about-me" data-i18n-href="route.about"
-                ><i class="fa fa-user"></i
-                ><span data-i18n="common.nav.about">About me</span></a
+              <a href="/about-me"
+                ><i class="fa fa-user"></i><span>About me</span></a
               >
             </li>
           </ul>
         </div>
       </nav>
       <!-- Mobile Menu Ends -->
-      <div
-        id="lang-switcher"
-        role="group"
-        aria-label="Language switch"
-        data-i18n-aria-label="common.lang.switcherLabel"
-      >
-        <button
+      <div id="lang-switcher" role="group" aria-label="Language switch">
+        <a
           id="lang-cs"
+          class="lang-option"
+          href="/cs"
+          hreflang="cs"
           lang="cs"
-          class="lang-option"
-          data-lang="cs"
-          type="button"
-          aria-pressed="false"
           title="Přepnout do češtiny"
-          data-i18n-title="common.lang.cs.title"
         >
-          <img
-            src="assets/img/czech_flag.png"
-            alt="Čeština"
-            data-i18n-alt="common.lang.cs.alt"
-          />
-        </button>
-        <button
+          <img src="assets/img/czech_flag.png" alt="Čeština" />
+        </a>
+        <a
           id="lang-en"
-          lang="en"
           class="lang-option"
-          data-lang="en"
-          type="button"
-          aria-pressed="true"
+          href="/"
+          hreflang="en"
+          lang="en"
           title="Switch to English"
-          data-i18n-title="common.lang.en.title"
+          aria-current="page"
         >
-          <img
-            src="assets/img/english_flag.png"
-            alt="English"
-            data-i18n-alt="common.lang.en.alt"
-          />
-        </button>
+          <img src="assets/img/english_flag.png" alt="English" />
+        </a>
       </div>
     </header>
     <!-- Header Ends -->
@@ -240,23 +223,18 @@
               height="842"
               class="img-fluid main-img-mobile d-none d-sm-block d-lg-none"
               alt="Portrait of Matěj Kadlec"
-              data-i18n-alt="home.hero.imageAlt"
             />
-            <h1
-              class="text-uppercase poppins-font"
-              data-i18n="home.hero.title"
-              data-i18n-html="true"
-            >
+            <h1 class="text-uppercase poppins-font">
               I'm Matěj Kadlec <span>and I'm a freelance developer</span>
             </h1>
             <p class="open-sans-font text-align-left">
-              <span data-i18n="home.hero.p1"
+              <span
                 >I'm a 25-year-old developer with over 5 years of experience,
                 based in Opava, Czechia. I studied computer science at VSB -
                 Technical University of Ostrava, and I'm currently working
                 remotely as a Full-Stack Developer for company DHL IT Services,
                 focusing on Python and the Django framework.</span
-              ><br /><br /><span data-i18n="home.hero.p2"
+              ><br /><br /><span
                 >My background spans various IT fields, including roles as an IT
                 article editor, QA engineer, web developer, BE developer, and
                 ETL developer. I also have experience with a lot of other
@@ -265,11 +243,9 @@
               <a
                 class="inline-link"
                 href="assets/cv/CV_Matej_Kadlec.pdf"
-                data-i18n-href="cv.file"
                 download=""
-                data-i18n="home.hero.cvLink"
                 >CV</a
-              >.<br /><br /><span data-i18n="home.hero.p3"
+              >.<br /><br /><span
                 >Additionally, I engage in freelance or personal side projects,
                 such as developing Python web and desktop applications,
                 AutoHotKey automatization scripts, AddOns for World of Warcraft
@@ -281,18 +257,14 @@
                 target="_blank"
                 rel="me noopener"
                 title="GitHub"
-                data-i18n="home.hero.github"
-                data-i18n-title="home.hero.github"
                 >GitHub</a
-              ><span data-i18n="home.hero.p4">
+              ><span>
                 to see my projects, most of them are MIT licensed and I welcome
                 any collaborators!</span
               >
             </p>
-            <a class="button" href="/about-me" data-i18n-href="route.about">
-              <span class="button-text" data-i18n="home.hero.moreButton"
-                >MORE ABOUT ME</span
-              >
+            <a class="button" href="/about-me">
+              <span class="button-text">MORE ABOUT ME</span>
               <span class="button-icon fa fa-arrow-right"></span>
             </a>
           </div>
@@ -305,7 +277,5 @@
     <script src="assets/js/preloader.min.js?v=20261026"></script>
     <script src="assets/js/revealator.js?v=20261026"></script>
     <script src="assets/js/custom.js?v=20261026"></script>
-    <script src="assets/js/translations.js?v=20261026"></script>
-    <script src="assets/js/i18n.js?v=20261026" defer></script>
   </body>
 </html>

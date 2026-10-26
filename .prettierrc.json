@@ -1,8 +1,0 @@
-{
-  "overrides": [
-    {
-      "files": "assets/js/i18n.js",
-      "options": { "printWidth": 100, "trailingComma": "none" }
-    }
-  ]
-}

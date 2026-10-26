@@ -11,6 +11,18 @@
     />
     <meta name="author" content="Matěj Kadlec" />
     <link rel="canonical" href="https://matejkadlec.cz/about-me" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://matejkadlec.cz/about-me"
+    />
+    <link rel="alternate" hreflang="cs" href="https://matejkadlec.cz/o-mne" />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://matejkadlec.cz/about-me"
+    />
+    <script src="assets/js/lang.js?v=20261026"></script>
 
     <!-- Social previews (Open Graph, X) -->
     <meta property="og:type" content="profile" />
@@ -18,6 +30,7 @@
     <meta property="profile:last_name" content="Kadlec" />
     <meta property="og:site_name" content="matejkadlec.cz" />
     <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="cs_CZ" />
     <meta property="og:url" content="https://matejkadlec.cz/about-me" />
     <meta property="og:title" content="Matěj Kadlec | About Me" />
     <meta
@@ -172,16 +185,14 @@
       >
         <li class="icon-box">
           <i class="fa fa-home"></i>
-          <a href="/" data-i18n-href="route.home">
-            <span class="icon-label" data-i18n="common.nav.home">Home</span>
+          <a href="/">
+            <span class="icon-label">Home</span>
           </a>
         </li>
         <li class="icon-box active">
           <i class="fa fa-user"></i>
-          <a href="/about-me" data-i18n-href="route.about">
-            <span class="icon-label" data-i18n="common.nav.about"
-              >About me</span
-            >
+          <a href="/about-me">
+            <span class="icon-label">About me</span>
           </a>
         </li>
       </ul>
@@ -193,59 +204,39 @@
           <span></span>
           <ul class="list-unstyled" id="menu">
             <li>
-              <a href="/" data-i18n-href="route.home"
-                ><i class="fa fa-home"></i
-                ><span data-i18n="common.nav.home">Home</span></a
-              >
+              <a href="/"><i class="fa fa-home"></i><span>Home</span></a>
             </li>
             <li class="active">
-              <a href="/about-me" data-i18n-href="route.about"
-                ><i class="fa fa-user"></i
-                ><span data-i18n="common.nav.about">About me</span></a
+              <a href="/about-me"
+                ><i class="fa fa-user"></i><span>About me</span></a
               >
             </li>
           </ul>
         </div>
       </nav>
       <!-- Mobile Menu Ends -->
-      <div
-        id="lang-switcher"
-        role="group"
-        aria-label="Language switch"
-        data-i18n-aria-label="common.lang.switcherLabel"
-      >
-        <button
+      <div id="lang-switcher" role="group" aria-label="Language switch">
+        <a
           id="lang-cs"
+          class="lang-option"
+          href="/o-mne"
+          hreflang="cs"
           lang="cs"
-          class="lang-option"
-          data-lang="cs"
-          type="button"
-          aria-pressed="false"
           title="Přepnout do češtiny"
-          data-i18n-title="common.lang.cs.title"
         >
-          <img
-            src="assets/img/czech_flag.png"
-            alt="Čeština"
-            data-i18n-alt="common.lang.cs.alt"
-          />
-        </button>
-        <button
+          <img src="assets/img/czech_flag.png" alt="Čeština" />
+        </a>
+        <a
           id="lang-en"
-          lang="en"
           class="lang-option"
-          data-lang="en"
-          type="button"
-          aria-pressed="true"
+          href="/about-me"
+          hreflang="en"
+          lang="en"
           title="Switch to English"
-          data-i18n-title="common.lang.en.title"
+          aria-current="page"
         >
-          <img
-            src="assets/img/english_flag.png"
-            alt="English"
-            data-i18n-alt="common.lang.en.alt"
-          />
-        </button>
+          <img src="assets/img/english_flag.png" alt="English" />
+        </a>
       </div>
     </header>
     <!-- Header Ends -->
@@ -253,10 +244,8 @@
     <section
       class="title-section text-center revealator-slideup revealator-once revealator-delay1"
     >
-      <h1 data-i18n="about.page.title" data-i18n-html="true">
-        About <span>Me</span>
-      </h1>
-      <span class="title-bg" data-i18n="about.page.titleBg">More Info</span>
+      <h1>About <span>Me</span></h1>
+      <span class="title-bg">More Info</span>
     </section>
     <!-- Page Title Ends -->
     <!-- Main Content Starts -->
@@ -270,7 +259,6 @@
           <div class="col-12">
             <h2
               class="text-uppercase pb-5 mb-0 text-left text-sm-center custom-title ft-wt-600"
-              data-i18n="about.section.experience"
             >
               My Experience
             </h2>
@@ -282,23 +270,14 @@
                   <div class="icon">
                     <i class="fa fa-briefcase"></i>
                   </div>
-                  <span
-                    class="time open-sans-font text-uppercase"
-                    data-i18n="about.experience.job1.time"
+                  <span class="time open-sans-font text-uppercase"
                     >Nov 2024 - present</span
                   >
-                  <h3
-                    class="poppins-font text-uppercase"
-                    data-i18n="about.experience.job1.title"
-                    data-i18n-html="true"
-                  >
+                  <h3 class="poppins-font text-uppercase">
                     Full-Stack Developer
                     <span class="place open-sans-font">DHL IT Services</span>
                   </h3>
-                  <p
-                    class="open-sans-font"
-                    data-i18n="about.experience.job1.desc"
-                  >
+                  <p class="open-sans-font">
                     Working as a Full-Stack Developer using Python (Django),
                     JavaScript, and PostgreSQL, responsible for software
                     architecture, implementation, and QA.
@@ -308,23 +287,14 @@
                   <div class="icon">
                     <i class="fa fa-briefcase"></i>
                   </div>
-                  <span
-                    class="time open-sans-font text-uppercase"
-                    data-i18n="about.experience.job2.time"
+                  <span class="time open-sans-font text-uppercase"
                     >Apr 2024 - Aug 2024</span
                   >
-                  <h3
-                    class="poppins-font text-uppercase"
-                    data-i18n="about.experience.job2.title"
-                    data-i18n-html="true"
-                  >
+                  <h3 class="poppins-font text-uppercase">
                     Integration Specialist
                     <span class="place open-sans-font">Enadata Group</span>
                   </h3>
-                  <p
-                    class="open-sans-font"
-                    data-i18n="about.experience.job2.desc"
-                  >
+                  <p class="open-sans-font">
                     Worked on MS Azure ETL pipelines while utilizing various
                     Azure tools. Also worked with Postman and APIs a lot.
                   </p>
@@ -333,23 +303,14 @@
                   <div class="icon">
                     <i class="fa fa-briefcase"></i>
                   </div>
-                  <span
-                    class="time open-sans-font text-uppercase"
-                    data-i18n="about.experience.job3.time"
+                  <span class="time open-sans-font text-uppercase"
                     >May 2022 - Aug 2023</span
                   >
-                  <h3
-                    class="poppins-font text-uppercase"
-                    data-i18n="about.experience.job3.title"
-                    data-i18n-html="true"
-                  >
+                  <h3 class="poppins-font text-uppercase">
                     Experienced ETL Developer
                     <span class="place open-sans-font">IDC CEMA</span>
                   </h3>
-                  <p
-                    class="open-sans-font"
-                    data-i18n="about.experience.job3.desc"
-                  >
+                  <p class="open-sans-font">
                     Worked as a Python ETL developer, mostly with pandas
                     library. I was also working with PostgreSQL, Git and many
                     more tools.
@@ -359,23 +320,14 @@
                   <div class="icon">
                     <i class="fa fa-briefcase"></i>
                   </div>
-                  <span
-                    class="time open-sans-font text-uppercase"
-                    data-i18n="about.experience.job4.time"
+                  <span class="time open-sans-font text-uppercase"
                     >Dec 2021 - Apr 2022</span
                   >
-                  <h3
-                    class="poppins-font text-uppercase"
-                    data-i18n="about.experience.job4.title"
-                    data-i18n-html="true"
-                  >
+                  <h3 class="poppins-font text-uppercase">
                     Python Developer
                     <span class="place open-sans-font">Freelance</span>
                   </h3>
-                  <p
-                    class="open-sans-font"
-                    data-i18n="about.experience.job4.desc"
-                  >
+                  <p class="open-sans-font">
                     Developed several Python applications focused on web
                     scraping, primarily utilizing Requests and Beautiful Soup 4.
                   </p>
@@ -390,23 +342,14 @@
                   <div class="icon">
                     <i class="fa fa-briefcase"></i>
                   </div>
-                  <span
-                    class="time open-sans-font text-uppercase"
-                    data-i18n="about.experience.job5.time"
+                  <span class="time open-sans-font text-uppercase"
                     >Sep 2021 - Apr 2022</span
                   >
-                  <h3
-                    class="poppins-font text-uppercase"
-                    data-i18n="about.experience.job5.title"
-                    data-i18n-html="true"
-                  >
+                  <h3 class="poppins-font text-uppercase">
                     Web Developer
                     <span class="place open-sans-font">Freelance</span>
                   </h3>
-                  <p
-                    class="open-sans-font"
-                    data-i18n="about.experience.job5.desc"
-                  >
+                  <p class="open-sans-font">
                     Created and maintained numerous fully responsive and modern
                     websites using WordPress, HTML/CSS, JavaScript, and PHP.
                   </p>
@@ -415,23 +358,14 @@
                   <div class="icon">
                     <i class="fa fa-briefcase"></i>
                   </div>
-                  <span
-                    class="time open-sans-font text-uppercase"
-                    data-i18n="about.experience.job6.time"
+                  <span class="time open-sans-font text-uppercase"
                     >Jul 2021 - Sep 2021</span
                   >
-                  <h3
-                    class="poppins-font text-uppercase"
-                    data-i18n="about.experience.job6.title"
-                    data-i18n-html="true"
-                  >
+                  <h3 class="poppins-font text-uppercase">
                     Software Engineer
                     <span class="place open-sans-font">profiq</span>
                   </h3>
-                  <p
-                    class="open-sans-font"
-                    data-i18n="about.experience.job6.desc"
-                  >
+                  <p class="open-sans-font">
                     Worked as a QA engineer for Avast, where I was manually
                     testing Avast products on VMs using VMware Workstation.
                   </p>
@@ -440,23 +374,14 @@
                   <div class="icon">
                     <i class="fa fa-briefcase"></i>
                   </div>
-                  <span
-                    class="time open-sans-font text-uppercase"
-                    data-i18n="about.experience.job7.time"
+                  <span class="time open-sans-font text-uppercase"
                     >Apr 2021 - Jun 2021</span
                   >
-                  <h3
-                    class="poppins-font text-uppercase"
-                    data-i18n="about.experience.job7.title"
-                    data-i18n-html="true"
-                  >
+                  <h3 class="poppins-font text-uppercase">
                     Junior Software Engineer
                     <span class="place open-sans-font">profiq</span>
                   </h3>
-                  <p
-                    class="open-sans-font"
-                    data-i18n="about.experience.job7.desc"
-                  >
+                  <p class="open-sans-font">
                     Worked on internal project using Python and its libraries
                     such as Flask, SQLAlchemy, WTForms and Selenium.
                   </p>
@@ -465,23 +390,14 @@
                   <div class="icon">
                     <i class="fa fa-briefcase"></i>
                   </div>
-                  <span
-                    class="time open-sans-font text-uppercase"
-                    data-i18n="about.experience.job8.time"
+                  <span class="time open-sans-font text-uppercase"
                     >Mar 2021 - Jul 2021</span
                   >
-                  <h3
-                    class="poppins-font text-uppercase"
-                    data-i18n="about.experience.job8.title"
-                    data-i18n-html="true"
-                  >
+                  <h3 class="poppins-font text-uppercase">
                     Redactor
                     <span class="place open-sans-font">itnetwork.cz</span>
                   </h3>
-                  <p
-                    class="open-sans-font"
-                    data-i18n="about.experience.job8.desc"
-                  >
+                  <p class="open-sans-font">
                     Developed a comprehensive course on Oracle Database,
                     covering PL/SQL and SQL Developer, with all articles rated
                     5/5 stars.
@@ -500,7 +416,6 @@
             <div class="col-12">
               <h2
                 class="text-uppercase pb-5 mb-0 text-left text-sm-center custom-title ft-wt-600"
-                data-i18n="about.section.education"
               >
                 My Education
               </h2>
@@ -512,26 +427,16 @@
                     <div class="icon">
                       <i class="fa fa-graduation-cap"></i>
                     </div>
-                    <span
-                      class="time open-sans-font text-uppercase"
-                      data-i18n="about.education.item1.time"
+                    <span class="time open-sans-font text-uppercase"
                       >2019 - 2021</span
                     >
-                    <h3
-                      class="poppins-font text-uppercase"
-                      data-i18n="about.education.item1.title"
-                      data-i18n-html="true"
-                    >
+                    <h3 class="poppins-font text-uppercase">
                       Bachelor's studies
                       <span class="place open-sans-font"
                         >VSB - Technical University of Ostrava</span
                       >
                     </h3>
-                    <p
-                      class="open-sans-font"
-                      data-i18n="about.education.item1.field"
-                      data-i18n-html="true"
-                    >
+                    <p class="open-sans-font">
                       <b>Field of study:</b> Applied Informatics
                     </p>
                   </li>
@@ -545,26 +450,16 @@
                     <div class="icon">
                       <i class="fa fa-graduation-cap"></i>
                     </div>
-                    <span
-                      class="time open-sans-font text-uppercase"
-                      data-i18n="about.education.item2.time"
+                    <span class="time open-sans-font text-uppercase"
                       >2015 - 2019</span
                     >
-                    <h3
-                      class="poppins-font text-uppercase"
-                      data-i18n="about.education.item2.title"
-                      data-i18n-html="true"
-                    >
+                    <h3 class="poppins-font text-uppercase">
                       Complete secondary vocational education with GCSE
                       <span class="place open-sans-font"
                         >Private Business Academy Opava</span
                       >
                     </h3>
-                    <p
-                      class="open-sans-font"
-                      data-i18n="about.education.item2.field"
-                      data-i18n-html="true"
-                    >
+                    <p class="open-sans-font">
                       <b>Field of study:</b> Economics and informatics
                     </p>
                   </li>
@@ -581,14 +476,13 @@
           <div class="col-12">
             <h2
               class="text-uppercase pb-4 pb-sm-5 mb-3 mb-sm-0 text-left text-sm-center custom-title ft-wt-600"
-              data-i18n="about.section.skills"
             >
               My Skills
             </h2>
           </div>
           <div class="col-6 col-md-3 mb-3 mb-sm-5">
             <div class="c100 p80">
-              <span data-i18n="about.skills.python.percent">80%</span>
+              <span>80%</span>
               <div class="slice">
                 <div class="bar"></div>
                 <div class="fill"></div>
@@ -596,14 +490,13 @@
             </div>
             <p
               class="h6 text-uppercase open-sans-font text-center mt-2 mt-sm-4"
-              data-i18n="about.skills.python.label"
             >
               Python
             </p>
           </div>
           <div class="col-6 col-md-3 mb-3 mb-sm-5">
             <div class="c100 p70">
-              <span data-i18n="about.skills.javascript.percent">70%</span>
+              <span>70%</span>
               <div class="slice">
                 <div class="bar"></div>
                 <div class="fill"></div>
@@ -611,14 +504,13 @@
             </div>
             <p
               class="h6 text-uppercase open-sans-font text-center mt-2 mt-sm-4"
-              data-i18n="about.skills.javascript.label"
             >
               JavaScript
             </p>
           </div>
           <div class="col-6 col-md-3 mb-3 mb-sm-5">
             <div class="c100 p100">
-              <span data-i18n="about.skills.htmlcss.percent">100%</span>
+              <span>100%</span>
               <div class="slice">
                 <div class="bar"></div>
                 <div class="fill"></div>
@@ -626,14 +518,13 @@
             </div>
             <p
               class="h6 text-uppercase open-sans-font text-center mt-2 mt-sm-4"
-              data-i18n="about.skills.htmlcss.label"
             >
               HTML/CSS
             </p>
           </div>
           <div class="col-6 col-md-3 mb-3 mb-sm-5">
             <div class="c100 p80">
-              <span data-i18n="about.skills.postgresql.percent">80%</span>
+              <span>80%</span>
               <div class="slice">
                 <div class="bar"></div>
                 <div class="fill"></div>
@@ -641,7 +532,6 @@
             </div>
             <p
               class="h6 text-uppercase open-sans-font text-center mt-2 mt-sm-4"
-              data-i18n="about.skills.postgresql.label"
             >
               PostgreSQL
             </p>
@@ -650,7 +540,7 @@
         <div class="row">
           <div class="col-6 col-md-3 mb-3 mb-sm-5">
             <div class="c100 p70">
-              <span data-i18n="about.skills.linux.percent">70%</span>
+              <span>70%</span>
               <div class="slice">
                 <div class="bar"></div>
                 <div class="fill"></div>
@@ -658,14 +548,13 @@
             </div>
             <p
               class="h6 text-uppercase open-sans-font text-center mt-2 mt-sm-4"
-              data-i18n="about.skills.linux.label"
             >
               Linux
             </p>
           </div>
           <div class="col-6 col-md-3 mb-3 mb-sm-5">
             <div class="c100 p90">
-              <span data-i18n="about.skills.git.percent">90%</span>
+              <span>90%</span>
               <div class="slice">
                 <div class="bar"></div>
                 <div class="fill"></div>
@@ -673,14 +562,13 @@
             </div>
             <p
               class="h6 text-uppercase open-sans-font text-center mt-2 mt-sm-4"
-              data-i18n="about.skills.git.label"
             >
               Git
             </p>
           </div>
           <div class="col-6 col-md-3 mb-3 mb-sm-5">
             <div class="c100 p80">
-              <span data-i18n="about.skills.cicd.percent">80%</span>
+              <span>80%</span>
               <div class="slice">
                 <div class="bar"></div>
                 <div class="fill"></div>
@@ -688,14 +576,13 @@
             </div>
             <p
               class="h6 text-uppercase open-sans-font text-center mt-2 mt-sm-4"
-              data-i18n="about.skills.cicd.label"
             >
               CI/CD
             </p>
           </div>
           <div class="col-6 col-md-3 mb-3 mb-sm-5">
             <div class="c100 p80">
-              <span data-i18n="about.skills.copilot.percent">80%</span>
+              <span>80%</span>
               <div class="slice">
                 <div class="bar"></div>
                 <div class="fill"></div>
@@ -703,7 +590,6 @@
             </div>
             <p
               class="h6 text-uppercase open-sans-font text-center mt-2 mt-sm-4"
-              data-i18n="about.skills.copilot.label"
             >
               Copilot
             </p>
@@ -712,7 +598,7 @@
         <div class="row">
           <div class="col-6 col-md-3 mb-3 mb-sm-5">
             <div class="c100 p80">
-              <span data-i18n="about.skills.django.percent">80%</span>
+              <span>80%</span>
               <div class="slice">
                 <div class="bar"></div>
                 <div class="fill"></div>
@@ -720,14 +606,13 @@
             </div>
             <p
               class="h6 text-uppercase open-sans-font text-center mt-2 mt-sm-4"
-              data-i18n="about.skills.django.label"
             >
               Django
             </p>
           </div>
           <div class="col-6 col-md-3 mb-3 mb-sm-5">
             <div class="c100 p100">
-              <span data-i18n="about.skills.agile.percent">100%</span>
+              <span>100%</span>
               <div class="slice">
                 <div class="bar"></div>
                 <div class="fill"></div>
@@ -735,14 +620,13 @@
             </div>
             <p
               class="h6 text-uppercase open-sans-font text-center mt-2 mt-sm-4"
-              data-i18n="about.skills.agile.label"
             >
               Agile
             </p>
           </div>
           <div class="col-6 col-md-3 mb-3 mb-sm-5">
             <div class="c100 p80">
-              <span data-i18n="about.skills.qa.percent">80%</span>
+              <span>80%</span>
               <div class="slice">
                 <div class="bar"></div>
                 <div class="fill"></div>
@@ -750,14 +634,13 @@
             </div>
             <p
               class="h6 text-uppercase open-sans-font text-center mt-2 mt-sm-4"
-              data-i18n="about.skills.qa.label"
             >
               QA
             </p>
           </div>
           <div class="col-6 col-md-3 mb-3 mb-sm-5">
             <div class="c100 p80">
-              <span data-i18n="about.skills.vscode.percent">80%</span>
+              <span>80%</span>
               <div class="slice">
                 <div class="bar"></div>
                 <div class="fill"></div>
@@ -765,7 +648,6 @@
             </div>
             <p
               class="h6 text-uppercase open-sans-font text-center mt-2 mt-sm-4"
-              data-i18n="about.skills.vscode.label"
             >
               VS Code
             </p>
@@ -785,7 +667,6 @@
             <img
               src="assets/img/logo.png"
               alt="Matěj Kadlec logo"
-              data-i18n-alt="about.footer.logoAlt"
               style="height: 80px; width: auto"
             />
           </div>
@@ -798,12 +679,9 @@
                   target="_blank"
                   rel="me noopener"
                   title="My LinkedIn"
-                  data-i18n-title="about.footer.linkedin"
                 >
                   <i class="fa fa-linkedin fa-2x"></i>
-                  <div class="d-block mt-2" data-i18n="about.footer.linkedin">
-                    My LinkedIn
-                  </div>
+                  <div class="d-block mt-2">My LinkedIn</div>
                 </a>
               </div>
               <div class="col-6 text-center mb-4">
@@ -812,54 +690,35 @@
                   target="_blank"
                   rel="me noopener"
                   title="My GitHub"
-                  data-i18n-title="about.footer.github"
                 >
                   <i class="fa fa-github fa-2x"></i>
-                  <div class="d-block mt-2" data-i18n="about.footer.github">
-                    My GitHub
-                  </div>
+                  <div class="d-block mt-2">My GitHub</div>
                 </a>
               </div>
               <div class="col-6 text-center mb-4">
                 <a
                   href="mailto:info@matejkadlec.cz"
                   title="info@matejkadlec.cz"
-                  data-i18n-title="about.footer.email"
                 >
                   <i class="fa fa-envelope-o fa-2x"></i>
-                  <div class="d-block mt-2" data-i18n="about.footer.email">
-                    info@matejkadlec.cz
-                  </div>
+                  <div class="d-block mt-2">info@matejkadlec.cz</div>
                 </a>
               </div>
               <div class="col-6 text-center mb-4">
                 <span style="cursor: default">
                   <i class="fa fa-map-marker fa-2x"></i>
-                  <span class="d-block mt-2" data-i18n="about.footer.location">
-                    Opava, Czechia
-                  </span>
+                  <span class="d-block mt-2"> Opava, Czechia </span>
                 </span>
               </div>
               <div class="d-none d-lg-flex footer-logo-center">
-                <img
-                  src="assets/img/logo.png"
-                  alt="Matěj Kadlec logo"
-                  data-i18n-alt="about.footer.logoAlt"
-                />
+                <img src="assets/img/logo.png" alt="Matěj Kadlec logo" />
               </div>
             </div>
           </div>
 
           <div class="col-12 text-center mt-4">
-            <a
-              class="button"
-              href="assets/cv/CV_Matej_Kadlec.pdf"
-              data-i18n-href="cv.file"
-              download=""
-            >
-              <span class="button-text" data-i18n="cv.button"
-                >Download my CV</span
-              >
+            <a class="button" href="assets/cv/CV_Matej_Kadlec.pdf" download="">
+              <span class="button-text">Download my CV</span>
               <span class="button-icon fa fa-download"></span>
             </a>
           </div>
@@ -871,7 +730,5 @@
     <script src="assets/js/preloader.min.js?v=20261026"></script>
     <script src="assets/js/revealator.js?v=20261026"></script>
     <script src="assets/js/custom.js?v=20261026"></script>
-    <script src="assets/js/translations.js?v=20261026"></script>
-    <script src="assets/js/i18n.js?v=20261026" defer></script>
   </body>
 </html>
