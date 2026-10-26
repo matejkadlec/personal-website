@@ -41,11 +41,6 @@ AddType image/jpeg .jpg
 <IfModule mod_expires.c>
     ExpiresActive On
 
-    # Pages and CVs are always revalidated (cheap 304s), so updates show up
-    # immediately after a deploy
-    ExpiresByType text/html "access plus 0 seconds"
-    ExpiresByType application/pdf "access plus 0 seconds"
-
     # CSS and JS are referenced with a ?v= version; bump it when they change
     ExpiresByType text/css "access plus 1 month"
     ExpiresByType application/javascript "access plus 1 month"
@@ -60,7 +55,10 @@ AddType image/jpeg .jpg
 </IfModule>
 
 <IfModule mod_headers.c>
-    <FilesMatch "^favicon\.ico$">
-        Header set Cache-Control "public, max-age=31536000"
+    # Pages and CVs are always revalidated (cheap 304s), so updates show up
+    # immediately after a deploy. "Header set" only touches successful
+    # responses, so redirects stay cacheable.
+    <FilesMatch "\.(html|pdf)$">
+        Header set Cache-Control "no-cache"
     </FilesMatch>
 </IfModule>
