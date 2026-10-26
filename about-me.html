@@ -185,7 +185,7 @@
           </a>
         </li>
       </ul>
-      <nav role="navigation" class="d-block d-lg-none">
+      <nav class="d-block d-lg-none">
         <div id="menuToggle">
           <input type="checkbox" />
           <span></span>
@@ -208,7 +208,7 @@
         </div>
       </nav>
       <!-- Mobile Menu Ends -->
-      <div id="lang-switcher" aria-label="Language switch">
+      <div id="lang-switcher" role="group" aria-label="Language switch">
         <button
           id="lang-cs"
           lang="cs"
@@ -830,9 +830,9 @@
               <div class="col-6 text-center mb-4">
                 <span style="cursor: default">
                   <i class="fa fa-map-marker fa-2x"></i>
-                  <div class="d-block mt-2" data-i18n="about.footer.location">
+                  <span class="d-block mt-2" data-i18n="about.footer.location">
                     Opava, Czechia
-                  </div>
+                  </span>
                 </span>
               </div>
               <div class="d-none d-lg-flex footer-logo-center">
