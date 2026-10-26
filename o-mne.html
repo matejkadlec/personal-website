@@ -22,7 +22,7 @@
       hreflang="x-default"
       href="https://matejkadlec.cz/about-me"
     />
-    <script src="assets/js/lang.js?v=20261026"></script>
+    <script src="assets/js/lang.js?v=20261027"></script>
 
     <!-- Social previews (Open Graph, X) -->
     <meta property="og:type" content="profile" />
@@ -89,12 +89,11 @@
     />
 
     <!-- Template CSS Files -->
-    <link href="assets/css/bootstrap.min.css?v=20261026" rel="stylesheet" />
-    <link href="assets/css/preloader.min.css?v=20261026" rel="stylesheet" />
-    <link href="assets/css/circle.css?v=20261026" rel="stylesheet" />
-    <link href="assets/css/font-awesome.min.css?v=20261026" rel="stylesheet" />
-    <link href="assets/css/revealator.min.css?v=20261026" rel="stylesheet" />
-    <link href="assets/css/style.css?v=20261026" rel="stylesheet" />
+    <link href="assets/css/bootstrap.min.css?v=20261027" rel="stylesheet" />
+    <link href="assets/css/preloader.min.css?v=20261027" rel="stylesheet" />
+    <link href="assets/css/font-awesome.min.css?v=20261027" rel="stylesheet" />
+    <link href="assets/css/revealator.min.css?v=20261027" rel="stylesheet" />
+    <link href="assets/css/style.css?v=20261027" rel="stylesheet" />
 
     <script type="application/ld+json">
       {
@@ -156,14 +155,20 @@
             "knowsAbout": [
               "Python",
               "Django",
+              "FastAPI",
               "JavaScript",
+              "TypeScript",
+              "React",
               "PostgreSQL",
+              "SQL",
               "HTML",
               "CSS",
-              "Linux",
               "Git",
               "CI/CD",
-              "ETL"
+              "Docker",
+              "Linux",
+              "ETL",
+              "QA"
             ],
             "sameAs": [
               "https://www.linkedin.com/in/matejkadlec/",
@@ -276,10 +281,11 @@
                     <span class="place open-sans-font">DHL IT Services</span>
                   </h3>
                   <p class="open-sans-font">
-                    <span class="text-nowrap">Full-stack</span> vývoj
-                    v&nbsp;Pythonu (Django), JavaScriptu a&nbsp;PostgreSQL;
-                    zodpovídám za softwarovou architekturu, implementaci
-                    a&nbsp;QA.
+                    <span class="text-nowrap">End-to-end</span> vývoj
+                    v&nbsp;Pythonu (Django), vanilla JavaScriptu, HTML/CSS
+                    a&nbsp;PostgreSQL od softwarové architektury přes
+                    implementaci až po QA v&nbsp;agilním týmu s&nbsp;Jirou,
+                    Confluence a&nbsp;Gitem.
                   </p>
                 </li>
                 <li>
@@ -479,182 +485,131 @@
         <div class="row">
           <div class="col-12">
             <h2
-              class="text-uppercase pb-4 pb-sm-5 mb-3 mb-sm-0 text-left text-sm-center custom-title ft-wt-600"
+              class="text-uppercase pb-4 mb-0 text-left text-sm-center custom-title ft-wt-600"
             >
               Dovednosti
             </h2>
-          </div>
-          <div class="col-6 col-md-3 mb-3 mb-sm-5">
-            <div class="c100 p80">
-              <span>80%</span>
-              <div class="slice">
-                <div class="bar"></div>
-                <div class="fill"></div>
-              </div>
-            </div>
-            <p
-              class="h6 text-uppercase open-sans-font text-center mt-2 mt-sm-4"
+            <ul
+              class="skill-legend open-sans-font"
+              aria-label="Úrovně dovedností"
             >
-              Python
-            </p>
+              <li><span class="skill-swatch skill-expert"></span>Expert</li>
+              <li>
+                <span class="skill-swatch skill-advanced"></span>Pokročilý
+              </li>
+              <li><span class="skill-swatch skill-proficient"></span>Zdatný</li>
+            </ul>
           </div>
-          <div class="col-6 col-md-3 mb-3 mb-sm-5">
-            <div class="c100 p70">
-              <span>70%</span>
-              <div class="slice">
-                <div class="bar"></div>
-                <div class="fill"></div>
-              </div>
-            </div>
-            <p
-              class="h6 text-uppercase open-sans-font text-center mt-2 mt-sm-4"
-            >
-              JavaScript
-            </p>
+          <div class="col-md-6 col-xl-4 skill-group">
+            <h3 class="poppins-font text-uppercase">Jazyky</h3>
+            <ul class="skill-list open-sans-font">
+              <li class="skill skill-expert">
+                <span class="sr-only">Expert: </span>Python
+              </li>
+              <li class="skill skill-expert">
+                <span class="sr-only">Expert: </span>HTML/CSS
+              </li>
+              <li class="skill skill-expert">
+                <span class="sr-only">Expert: </span>JavaScript
+              </li>
+              <li class="skill skill-advanced">
+                <span class="sr-only">Pokročilý: </span>TypeScript
+              </li>
+              <li class="skill skill-advanced">
+                <span class="sr-only">Pokročilý: </span>SQL
+              </li>
+              <li class="skill skill-advanced">
+                <span class="sr-only">Pokročilý: </span>Lua
+              </li>
+              <li class="skill skill-advanced">
+                <span class="sr-only">Pokročilý: </span>Java
+              </li>
+              <li class="skill skill-advanced">
+                <span class="sr-only">Pokročilý: </span>AutoHotkey
+              </li>
+            </ul>
           </div>
-          <div class="col-6 col-md-3 mb-3 mb-sm-5">
-            <div class="c100 p100">
-              <span>100%</span>
-              <div class="slice">
-                <div class="bar"></div>
-                <div class="fill"></div>
-              </div>
-            </div>
-            <p
-              class="h6 text-uppercase open-sans-font text-center mt-2 mt-sm-4"
-            >
-              HTML/CSS
-            </p>
+          <div class="col-md-6 col-xl-4 skill-group">
+            <h3 class="poppins-font text-uppercase">Frameworky a knihovny</h3>
+            <ul class="skill-list open-sans-font">
+              <li class="skill skill-expert">
+                <span class="sr-only">Expert: </span>Django
+              </li>
+              <li class="skill skill-advanced">
+                <span class="sr-only">Pokročilý: </span>FastAPI
+              </li>
+              <li class="skill skill-advanced">
+                <span class="sr-only">Pokročilý: </span>React
+              </li>
+              <li class="skill skill-proficient">
+                <span class="sr-only">Zdatný: </span>Next.js
+              </li>
+            </ul>
           </div>
-          <div class="col-6 col-md-3 mb-3 mb-sm-5">
-            <div class="c100 p80">
-              <span>80%</span>
-              <div class="slice">
-                <div class="bar"></div>
-                <div class="fill"></div>
-              </div>
-            </div>
-            <p
-              class="h6 text-uppercase open-sans-font text-center mt-2 mt-sm-4"
-            >
-              PostgreSQL
-            </p>
+          <div class="col-md-6 col-xl-4 skill-group">
+            <h3 class="poppins-font text-uppercase">Data</h3>
+            <ul class="skill-list open-sans-font">
+              <li class="skill skill-expert">
+                <span class="sr-only">Expert: </span>PostgreSQL
+              </li>
+              <li class="skill skill-advanced">
+                <span class="sr-only">Pokročilý: </span>Datová analytika
+              </li>
+              <li class="skill skill-advanced">
+                <span class="sr-only">Pokročilý: </span>ETL / pandas
+              </li>
+            </ul>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-6 col-md-3 mb-3 mb-sm-5">
-            <div class="c100 p70">
-              <span>70%</span>
-              <div class="slice">
-                <div class="bar"></div>
-                <div class="fill"></div>
-              </div>
-            </div>
-            <p
-              class="h6 text-uppercase open-sans-font text-center mt-2 mt-sm-4"
-            >
-              Linux
-            </p>
+          <div class="col-md-6 col-xl-4 skill-group">
+            <h3 class="poppins-font text-uppercase">API a integrace</h3>
+            <ul class="skill-list open-sans-font">
+              <li class="skill skill-expert">
+                <span class="sr-only">Expert: </span>Riot API
+              </li>
+              <li class="skill skill-advanced">
+                <span class="sr-only">Pokročilý: </span>Stripe API
+              </li>
+              <li class="skill skill-proficient">
+                <span class="sr-only">Zdatný: </span>Google API
+              </li>
+            </ul>
           </div>
-          <div class="col-6 col-md-3 mb-3 mb-sm-5">
-            <div class="c100 p90">
-              <span>90%</span>
-              <div class="slice">
-                <div class="bar"></div>
-                <div class="fill"></div>
-              </div>
-            </div>
-            <p
-              class="h6 text-uppercase open-sans-font text-center mt-2 mt-sm-4"
-            >
-              Git
-            </p>
+          <div class="col-md-6 col-xl-4 skill-group">
+            <h3 class="poppins-font text-uppercase">DevOps a nástroje</h3>
+            <ul class="skill-list open-sans-font">
+              <li class="skill skill-expert">
+                <span class="sr-only">Expert: </span>Git
+              </li>
+              <li class="skill skill-advanced">
+                <span class="sr-only">Pokročilý: </span>CI/CD · GitHub Actions
+              </li>
+              <li class="skill skill-advanced">
+                <span class="sr-only">Pokročilý: </span>Docker
+              </li>
+              <li class="skill skill-advanced">
+                <span class="sr-only">Pokročilý: </span>Linux
+              </li>
+              <li class="skill skill-proficient">
+                <span class="sr-only">Zdatný: </span>Cloudflare
+              </li>
+            </ul>
           </div>
-          <div class="col-6 col-md-3 mb-3 mb-sm-5">
-            <div class="c100 p80">
-              <span>80%</span>
-              <div class="slice">
-                <div class="bar"></div>
-                <div class="fill"></div>
-              </div>
-            </div>
-            <p
-              class="h6 text-uppercase open-sans-font text-center mt-2 mt-sm-4"
-            >
-              CI/CD
-            </p>
-          </div>
-          <div class="col-6 col-md-3 mb-3 mb-sm-5">
-            <div class="c100 p80">
-              <span>80%</span>
-              <div class="slice">
-                <div class="bar"></div>
-                <div class="fill"></div>
-              </div>
-            </div>
-            <p
-              class="h6 text-uppercase open-sans-font text-center mt-2 mt-sm-4"
-            >
-              Copilot
-            </p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-6 col-md-3 mb-3 mb-sm-5">
-            <div class="c100 p80">
-              <span>80%</span>
-              <div class="slice">
-                <div class="bar"></div>
-                <div class="fill"></div>
-              </div>
-            </div>
-            <p
-              class="h6 text-uppercase open-sans-font text-center mt-2 mt-sm-4"
-            >
-              Django
-            </p>
-          </div>
-          <div class="col-6 col-md-3 mb-3 mb-sm-5">
-            <div class="c100 p100">
-              <span>100%</span>
-              <div class="slice">
-                <div class="bar"></div>
-                <div class="fill"></div>
-              </div>
-            </div>
-            <p
-              class="h6 text-uppercase open-sans-font text-center mt-2 mt-sm-4"
-            >
-              Agile
-            </p>
-          </div>
-          <div class="col-6 col-md-3 mb-3 mb-sm-5">
-            <div class="c100 p80">
-              <span>80%</span>
-              <div class="slice">
-                <div class="bar"></div>
-                <div class="fill"></div>
-              </div>
-            </div>
-            <p
-              class="h6 text-uppercase open-sans-font text-center mt-2 mt-sm-4"
-            >
-              QA
-            </p>
-          </div>
-          <div class="col-6 col-md-3 mb-3 mb-sm-5">
-            <div class="c100 p80">
-              <span>80%</span>
-              <div class="slice">
-                <div class="bar"></div>
-                <div class="fill"></div>
-              </div>
-            </div>
-            <p
-              class="h6 text-uppercase open-sans-font text-center mt-2 mt-sm-4"
-            >
-              VS Code
-            </p>
+          <div class="col-md-6 col-xl-4 skill-group">
+            <h3 class="poppins-font text-uppercase">Způsob práce</h3>
+            <ul class="skill-list open-sans-font">
+              <li class="skill skill-expert">
+                <span class="sr-only">Expert: </span>QA
+              </li>
+              <li class="skill skill-expert">
+                <span class="sr-only">Expert: </span>Vývoj s pomocí AI
+              </li>
+              <li class="skill skill-expert">
+                <span class="sr-only">Expert: </span>Agile
+              </li>
+              <li class="skill skill-expert">
+                <span class="sr-only">Expert: </span>Jira a Confluence
+              </li>
+            </ul>
           </div>
         </div>
         <!-- Skills Ends -->
@@ -731,8 +686,8 @@
     </footer>
 
     <!-- Template JS Files -->
-    <script src="assets/js/preloader.min.js?v=20261026"></script>
-    <script src="assets/js/revealator.js?v=20261026"></script>
-    <script src="assets/js/custom.js?v=20261026"></script>
+    <script src="assets/js/preloader.min.js?v=20261027"></script>
+    <script src="assets/js/revealator.js?v=20261027"></script>
+    <script src="assets/js/custom.js?v=20261027"></script>
   </body>
 </html>

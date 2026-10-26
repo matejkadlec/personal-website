@@ -18,8 +18,8 @@ o-mne.html              About page, Czech (served at /o-mne)
 sitemap.xml, robots.txt Crawler files
 manifest.json           Web app manifest
 assets/css/style.css    Site styles (derived from the "Tunis" template)
-assets/css/*            Vendor CSS: Bootstrap, Font Awesome, circle.css (skill
-                        charts), preloader, revealator (scroll animations)
+assets/css/*            Vendor CSS: Bootstrap, Font Awesome, preloader,
+                        revealator (scroll animations)
 assets/js/lang.js       Redirect to the visitor's language, flag switcher
 assets/js/revealator.js Scroll reveal animations (vanilla port of a jQuery plugin)
 assets/js/custom.js     Removes the slide-up offset once the page is ready;
@@ -54,10 +54,14 @@ assets/fonts/           Font Awesome 4.7 webfonts
   identical apart from the text, so both render the same. A new page needs
   both files, hreflang links in both, an entry in `FILE_NAMES` in `lang.js`
   and in `sitemap.xml`.
-- A skill percentage lives in the `c100 pNN` class (circle.css draws the arc
-  from it) and in the percentage text, in both `about-me.html` and
-  `o-mne.html`. The JSON-LD `knowsAbout` list names related skills; update it
-  if a main skill is added or removed.
+- Skills are tags grouped by area (`.skill-group` > `.skill-list`), sorted
+  from expert to proficient within each group. The level is the tag's class
+  (`skill-expert` filled, `skill-advanced` outlined, `skill-proficient`
+  muted) plus a screen-reader prefix (`<span class="sr-only">Expert: </span>`);
+  change both, in both `about-me.html` and `o-mne.html` (Czech level names:
+  Expert, Pokročilý, Zdatný). The JSON-LD `knowsAbout` list names the main
+  skills and is the same in all four pages; update it if a main skill is
+  added or removed.
 
 ## Routing (.htaccess)
 
@@ -117,6 +121,10 @@ Production is Apache 2.4 behind an OpenResty proxy that terminates TLS.
   `.is-scrollable` after a fixed 1s, once the slide-up (0.1s delay + 0.6s) is
   over; the section scrolls only with both classes, so no scrollbar flashes
   during the animation. Keep the 1s in step with the animation.
+- The age on the home pages is a `<span class="js-age" data-birthdate>`;
+  `custom.js` replaces the number with the age computed from the birth date,
+  and the number in the HTML is only the fallback for crawlers and visitors
+  without JavaScript (bump it when convenient, it is not load-bearing).
 - Formatting: Prettier 3 with default options (`npx prettier@3 --check .`);
   vendor files are excluded in `.prettierignore`.
 - Validate HTML with the Nu HTML Checker when changing markup.

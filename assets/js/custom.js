@@ -11,6 +11,30 @@
     });
 
     initHomeScrolling();
+    updateAges();
+  }
+
+  // The home pages state the age from data-birthdate (YYYY-MM-DD); the number
+  // in the HTML is only the fallback for crawlers and visitors without JS.
+  function updateAges() {
+    const today = new Date();
+    const month = today.getMonth() + 1;
+    const day = today.getDate();
+
+    document.querySelectorAll(".js-age[data-birthdate]").forEach((element) => {
+      const [year, birthMonth, birthDay] = element.dataset.birthdate
+        .split("-")
+        .map(Number);
+      let age = today.getFullYear() - year;
+
+      if (month < birthMonth || (month === birthMonth && day < birthDay)) {
+        age -= 1;
+      }
+
+      if (age > 0) {
+        element.textContent = age;
+      }
+    });
   }
 
   // Short desktop screens (see style.css): when the home content doesn't fit,
