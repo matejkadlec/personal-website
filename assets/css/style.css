@@ -479,7 +479,7 @@ body.light hr.separator {
     color: #fff;
   }
 
-  .header .icon-box h2 {
+  .header .icon-box .icon-label {
     font-size: 15px;
     font-weight: 500;
     white-space: nowrap;
@@ -507,7 +507,7 @@ body.light hr.separator {
     top: 15px;
   }
 
-  .header .icon-box h2 {
+  .header .icon-box .icon-label {
     z-index: -1;
     position: absolute;
     top: 0;
@@ -524,7 +524,7 @@ body.light hr.separator {
     white-space: nowrap;
   }
 
-  .header .icon-box a:hover h2 {
+  .header .icon-box a:hover .icon-label {
     opacity: 1;
     right: 27px;
     margin: 0;
@@ -720,7 +720,7 @@ body.light hr.separator {
   opacity: 0.8;
 }
 
-.about .resume-box h5 {
+.about .resume-box h3 {
   font-size: 18px;
   margin: 7px 0 10px;
 }
@@ -1691,7 +1691,7 @@ body.light hr.separator {
     padding-bottom: 0;
   }
 
-  .about .resume-box h5 {
+  .about .resume-box h3 {
     font-size: 17px;
   }
 
@@ -1829,7 +1829,7 @@ body.light.blog .page-item.active .page-link,
 body.light .header ul.icon-menu li.icon-box.active,
 body.light .header ul.icon-menu li.icon-box:hover,
 .btn,
-.header .icon-box h2,
+.header .icon-box .icon-label,
 .home .color-block,
 .title-section hr,
 .portfolio .slideshow .carousel-indicators li.active,
