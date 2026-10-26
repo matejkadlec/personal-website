@@ -10,14 +10,15 @@
       element.classList.add("no-transform");
     });
 
-    // Let the home section scroll on short screens (see style.css) once the
-    // slide-up transition (0.1s delay + 0.6s) started above has finished.
-    setTimeout(enableHomeScrolling, 1000);
+    initHomeScrolling();
   }
 
-  // The section only becomes scrollable (and gets its padding) when the
-  // content doesn't fit, so screens it fits on look exactly as before.
-  function enableHomeScrolling() {
+  // Short desktop screens (see style.css): when the home content doesn't fit,
+  // it gets padding right away (.is-overflowing, re-checked on resize), and
+  // the section starts scrolling (.is-scrollable) once the slide-up
+  // transition started above (0.1s delay + 0.6s) has finished. Screens the
+  // content fits on look exactly as before.
+  function initHomeScrolling() {
     const section = document.querySelector(".home .container-home");
     const content = section && section.querySelector(".home-details");
 
@@ -27,7 +28,7 @@
 
     const update = () => {
       section.classList.toggle(
-        "is-scrollable",
+        "is-overflowing",
         content.offsetHeight > section.clientHeight,
       );
     };
@@ -38,6 +39,8 @@
     if (window.ResizeObserver) {
       new ResizeObserver(update).observe(content);
     }
+
+    setTimeout(() => section.classList.add("is-scrollable"), 1000);
   }
 
   // Like jQuery 3's ready(): in its own task after DOMContentLoaded (see

@@ -499,10 +499,10 @@ hr.separator {
   }
 
   /* On short screens the content scrolls inside this section instead of
-     being cut off. custom.js adds .is-scrollable when the content doesn't
-     fit, once the slide-up animation is over (while it runs, the fixed
-     portrait and colour block overflow the transformed section and would
-     show a scrollbar). */
+     being cut off. custom.js adds .is-overflowing when the content doesn't
+     fit, and .is-scrollable once the slide-up animation is over (while it
+     runs, the fixed portrait and colour block overflow the transformed
+     section and would show a scrollbar). */
   /* 100% (= the viewport) rather than 100vh: a vh length would be animated
      by the reveal transition when the window is resized */
   .home .container-home {
@@ -510,12 +510,12 @@ hr.separator {
     align-items: flex-start;
   }
 
-  .home .container-home.is-scrollable {
+  .home .container-home.is-overflowing.is-scrollable {
     overflow-x: hidden;
     overflow-y: auto;
   }
 
-  .home .container-home.is-scrollable .home-details-container {
+  .home .container-home.is-overflowing .home-details-container {
     padding: 40px 0;
   }
 }
@@ -1008,5 +1008,11 @@ hr.separator {
 
   #lang-switcher .lang-option img {
     width: 28px;
+  }
+}
+
+@media (max-width: 299px) {
+  .title-section h1 {
+    font-size: 20px;
   }
 }
