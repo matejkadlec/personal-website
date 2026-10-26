@@ -487,11 +487,26 @@ hr.separator {
 @media (min-width: 992px) {
   .home .home-details-container {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 40px 0;
   }
 
   body.home {
     overflow: hidden;
+  }
+
+  /* On short screens the content scrolls inside this section instead of
+     being cut off. custom.js enables the scrolling once the slide-up
+     animation is over (while it runs, the fixed portrait and colour block
+     overflow the transformed section and would show a scrollbar). */
+  .home .container-home {
+    height: 100vh;
+    align-items: flex-start;
+  }
+
+  .home .container-home.is-scrollable {
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 }
 
@@ -551,6 +566,11 @@ hr.separator {
     height: 54px;
     border-radius: 5px;
     background: #252525;
+  }
+
+  #menuToggle:has(input:focus-visible) {
+    outline: 2px solid #ffb400;
+    outline-offset: 2px;
   }
 
   #menuToggle input {
