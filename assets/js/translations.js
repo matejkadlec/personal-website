@@ -25,7 +25,7 @@ window.TRANSLATIONS = {
       "Additionally, I engage in freelance or personal side projects, such as developing Python web and desktop applications, AutoHotKey automatization scripts, AddOns for World of Warcraft and more. Visit my",
     "home.hero.github": "GitHub",
     "home.hero.p4":
-      "to see my projects, most of them are MIT licensed and I welcome any collaboratos!",
+      " to see my projects, most of them are MIT licensed and I welcome any collaborators!",
     "home.hero.moreButton": "MORE ABOUT ME",
 
     "about.page.title": "About <span>Me</span>",
@@ -48,7 +48,7 @@ window.TRANSLATIONS = {
     "about.experience.job3.title":
       'Experienced ETL Developer <span class="place open-sans-font">IDC CEMA</span>',
     "about.experience.job3.desc":
-      "Worked as a Python ETL developer, mostly with pandas library. I was also working with PostgreSQL, Git and much more tools.",
+      "Worked as a Python ETL developer, mostly with pandas library. I was also working with PostgreSQL, Git and many more tools.",
 
     "about.experience.job4.time": "Dec 2021 - Apr 2022",
     "about.experience.job4.title":
@@ -72,7 +72,7 @@ window.TRANSLATIONS = {
     "about.experience.job7.title":
       'Junior Software Engineer <span class="place open-sans-font">profiq</span>',
     "about.experience.job7.desc":
-      "Worked on internal project using Python and it's libraries such as Flask, SQLAlchemy, WTForms and Selenium.",
+      "Worked on internal project using Python and its libraries such as Flask, SQLAlchemy, WTForms and Selenium.",
 
     "about.experience.job8.time": "Mar 2021 - Jul 2021",
     "about.experience.job8.title":
@@ -135,7 +135,7 @@ window.TRANSLATIONS = {
     "common.lang.en.title": "Switch to English",
     "common.lang.en.alt": "English",
 
-    "cv.button": "Stáhnetě si mé CV",
+    "cv.button": "Stáhněte si mé CV",
     "cv.file": "assets/cv/CV_Matěj_Kadlec.pdf",
 
     "home.hero.imageAlt": "Portrét Matěje Kadlece",
