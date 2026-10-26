@@ -48,7 +48,8 @@ assets/fonts/           Font Awesome 4.7 webfonts
   - CV links use the `cv.file` key, which also sets the `download` file name.
 - A skill percentage lives in four places: the `c100 pNN` class (circle.css
   draws the arc from it) and the `about.skills.*.percent` text in the static
-  HTML, `en` and `cs`. The JSON-LD `knowsAbout` list also names the skills.
+  HTML, `en` and `cs`. The JSON-LD `knowsAbout` list names related skills;
+  update it if a main skill is added or removed.
 
 ## Routing (.htaccess)
 
@@ -61,10 +62,16 @@ Production is Apache 2.4 behind an OpenResty proxy that terminates TLS.
   served from the matching `.html` file.
 - Images requested with a foreign `Referer` get 403 (hotlink protection).
 - A broken `.htaccess` takes the whole site down (500), so test changes on a
-  local Apache 2.4 before deploying. Probe with
-  `curl -H 'Host: matejkadlec.cz'` (the www/HTTPS rules only fire for that
-  host; images also need `-H 'Referer: https://matejkadlec.cz/'`). In a
-  browser on localhost, images get 403 from the hotlink rule by design.
+  local Apache 2.4 before deploying. Probe it with curl:
+  - the clean-URL, `.html`, trailing-slash, `/o-mne` and hotlink rules don't
+    check the host, so any Host (e.g. localhost) works. curl sends no
+    `Referer`, so images are served; add a foreign one
+    (`-H 'Referer: https://example.com/'`) to see the hotlink 403;
+  - the canonical redirects only fire for `-H 'Host: www.matejkadlec.cz'` and,
+    on plain http, `-H 'Host: matejkadlec.cz'` (every request then 301s to
+    https), so test them separately;
+  - in a browser on localhost, images get 403 from the hotlink rule by design
+    (the Referer is not matejkadlec.cz).
 
 ## SEO
 
