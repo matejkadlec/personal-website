@@ -20,6 +20,8 @@
     "/about-me": "about-me.html",
     "/cs": "cs.html",
     "/o-mne": "o-mne.html",
+    "/projects": "projects.html",
+    "/projekty": "projekty.html",
   };
   const CRAWLER_PATTERN = /bot|crawl|spider|slurp|lighthouse|inspectiontool/i;
 

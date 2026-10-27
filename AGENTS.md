@@ -14,6 +14,8 @@ index.html              Home page, English (served at /)
 about-me.html           About page, English (served at /about-me)
 cs.html                 Home page, Czech (served at /cs)
 o-mne.html              About page, Czech (served at /o-mne)
+projects.html           Projects page, English (served at /projects)
+projekty.html           Projects page, Czech (served at /projekty)
 .htaccess               Apache config: canonical redirects, clean URLs, caching
 sitemap.xml, robots.txt Crawler files
 manifest.json           Web app manifest
@@ -23,9 +25,12 @@ assets/css/*            Vendor CSS: Bootstrap, Font Awesome, preloader,
 assets/js/lang.js       Redirect to the visitor's language, flag switcher
 assets/js/revealator.js Scroll reveal animations (vanilla port of a jQuery plugin)
 assets/js/custom.js     Removes the slide-up offset once the page is ready;
-                        home page scrolling on short desktop screens
+                        home page scrolling on short desktop screens; the age
+                        on the home pages
+assets/js/projects.js   Projects page: screenshot galleries and the lightbox
 assets/js/preloader.min.js  Full-screen preloader until window load
 assets/img/             Portrait, logo, flags, favicons
+assets/img/projects/    Project screenshots (+ thumbs/ for the gallery strips)
 assets/cv/              CV PDFs (CV_Matej_Kadlec.pdf = EN, CV_Matěj_Kadlec.pdf = CS)
 assets/fonts/           Font Awesome 4.7 webfonts
 ```
@@ -33,7 +38,8 @@ assets/fonts/           Font Awesome 4.7 webfonts
 ## Languages
 
 - Every page exists twice, as complete static HTML: English (`index.html`,
-  `about-me.html`) and Czech (`cs.html`, `o-mne.html`). Each has its own
+  `about-me.html`, `projects.html`) and Czech (`cs.html`, `o-mne.html`,
+  `projekty.html`). Each has its own
   `<html lang>`, title, meta description, canonical URL, Open Graph locale and
   JSON-LD, and the pairs are linked with `<link rel="alternate" hreflang>`
   (`en`, `cs`, and `x-default` = English).
@@ -49,7 +55,11 @@ assets/fonts/           Font Awesome 4.7 webfonts
 - The flags are links to the counterpart page; the current language has
   `aria-current="page"`, and clicking the other one stores the choice.
 - On `file://`, `lang.js` rewrites the root-relative page links (`/`,
-  `/about-me`, `/cs`, `/o-mne`) to the `.html` files (`FILE_NAMES`).
+  `/about-me`, `/projects`, `/cs`, `/o-mne`, `/projekty`) to the `.html`
+  files (`FILE_NAMES`).
+- The navigation (desktop icon menu and mobile menu) lists Home, About me and
+  Projects in every page; the current page's item has the `active` class. A
+  new page also needs its item in the navigation of all pages.
 - When changing content, edit both language versions and keep their markup
   identical apart from the text, so both render the same. A new page needs
   both files, hreflang links in both, an entry in `FILE_NAMES` in `lang.js`
@@ -60,8 +70,25 @@ assets/fonts/           Font Awesome 4.7 webfonts
   muted) plus a screen-reader prefix (`<span class="sr-only">Expert: </span>`);
   change both, in both `about-me.html` and `o-mne.html` (Czech level names:
   Expert, Pokročilý, Zdatný). The JSON-LD `knowsAbout` list names the main
-  skills and is the same in all four pages; update it if a main skill is
+  skills and is the same in all six pages; update it if a main skill is
   added or removed.
+
+## Projects page
+
+- Featured projects (`article.project-featured`) have a screenshot gallery:
+  the large `.project-shot` button shows the selected screenshot and opens
+  the lightbox (`dialog#lightbox`, arrow keys step through, Esc closes); each
+  `.project-thumb` carries the full image in `data-full` and its caption in
+  `data-caption`, and the selected one has `aria-pressed="true"`.
+- Screenshots are JPEGs in `assets/img/projects/`: web app screenshots are
+  1600x711 (the gallery frame is 1600 / 711, browser chrome and scrollbars
+  cropped off), each with a 400x178 thumbnail in `thumbs/` under the same
+  name. Smaller in-game screenshots keep their own size; the frame shows them
+  centred (`object-fit: scale-down`).
+- Smaller projects are `article.project-card`s (icon, text, tags, links)
+  without screenshots, two per row from 768px.
+- A project with a private repository links to its live site and shows the
+  "Private repository" note instead of a GitHub link.
 
 ## Routing (.htaccess)
 
@@ -71,7 +98,7 @@ Production is Apache 2.4 behind an OpenResty proxy that terminates TLS.
   checks `REQUEST_SCHEME`, which Apache reports correctly behind the proxy).
 - `/index.html` -> `/`, `/page.html` -> `/page`, trailing slashes are dropped.
 - Extensionless top-level paths are served from the matching `.html` file
-  (`/about-me`, `/cs`, `/o-mne`).
+  (`/about-me`, `/projects`, `/cs`, `/o-mne`, `/projekty`).
 - A broken `.htaccess` takes the whole site down (500), so test changes on a
   local Apache 2.4 before deploying. Probe it with curl:
   - the clean-URL, `.html` and trailing-slash rules don't check the host, so
@@ -84,10 +111,10 @@ Production is Apache 2.4 behind an OpenResty proxy that terminates TLS.
 
 - Each page has its own canonical URL, hreflang links, meta description, Open
   Graph/X tags and JSON-LD (`WebSite` + `Person`, plus `ProfilePage` on the
-  About pages). The `WebSite` and `Person` entities are duplicated in all four
-  pages (Czech pages have a Czech `jobTitle`, `description` and school name),
-  and `og:title`/`og:description` mirror `<title>`/the meta description; keep
-  them in sync.
+  About pages and `CollectionPage` on the Projects pages). The `WebSite` and
+  `Person` entities are duplicated in all six pages (Czech pages have a Czech
+  `jobTitle`, `description` and school name), and `og:title`/`og:description`
+  mirror `<title>`/the meta description; keep them in sync.
 - Update `<lastmod>` in `sitemap.xml` when a page or CV changes.
 - Keep the heading hierarchy (one `h1` per page, then `h2` sections, `h3`
   entries).
@@ -96,13 +123,13 @@ Production is Apache 2.4 behind an OpenResty proxy that terminates TLS.
 
 - HTML and PDFs are always revalidated; CSS/JS are cached for a month and are
   referenced with a `?v=YYYYMMDD` query. **When you change any CSS or JS file,
-  bump the `?v=` value in all four HTML files** (to today's date, or add a
+  bump the `?v=` value in all six HTML files** (to today's date, or add a
   suffix such as `20261026b` if that value is already live).
 - Images (6 months for JPEG) and fonts are cached long-term: give a replaced
   image a new file name instead of overwriting it. The portrait's URL is used
   in: the `<img>` in `index.html` and `cs.html` (with width/height), the
   `style.css` background (then bump `?v=`), `og:image` (+ width/height) and
-  the JSON-LD `Person.image` in all four pages, and as the target of the
+  the JSON-LD `Person.image` in all six pages, and as the target of the
   `.htaccess` redirect from the old `portrait.png` URL (keep that redirect).
 - Optimize images before adding them (the portrait is a quality-92 JPEG,
   842x842, with an sRGB profile).
@@ -133,7 +160,7 @@ Production is Apache 2.4 behind an OpenResty proxy that terminates TLS.
 
 - Open any page directly (`file://`): `lang.js` redirects and rewrites links to
   the `.html` files.
-- Or use a static server with clean URLs, e.g. `npx serve .` (all four pages
+- Or use a static server with clean URLs, e.g. `npx serve .` (all six pages
   work; the `.htaccess` redirects only work on Apache).
 
 ## Deployment
