@@ -30,30 +30,69 @@
     });
 
     shot.addEventListener("click", () => {
-      openLightbox(thumbs, Number(shot.dataset.index) || 0, select, shot);
+      openLightbox({
+        items: thumbs,
+        index: Number(shot.dataset.index) || 0,
+        name: projectName,
+        onChange: select,
+        opener: shot,
+      });
     });
   }
 
   function createLightbox(dialog) {
+    // The caption describes the screenshot, so the image itself has no alt
     const image = document.createElement("img");
     image.className = "lightbox-img";
     image.alt = "";
     dialog.querySelector(".lightbox-figure").prepend(image);
+
     const text = dialog.querySelector(".lightbox-text");
     const count = dialog.querySelector(".lightbox-count");
+    const baseLabel = dialog.getAttribute("aria-label");
     let items = [];
     let index = 0;
     let onChange = null;
     let opener = null;
+    let pending = null;
+
+    // The browser keeps showing the previous image until the next one has
+    // loaded, so the caption and counter change only once it is there
+    function showText() {
+      if (!pending) {
+        return;
+      }
+      text.textContent = pending.dataset.caption;
+      count.textContent = `${items.indexOf(pending) + 1} / ${items.length}`;
+      image.classList.remove("is-loading");
+      pending = null;
+    }
+
+    image.addEventListener("load", showText);
+    image.addEventListener("error", showText);
+
+    function preload(item) {
+      new Image().src = item.dataset.full;
+    }
 
     function show(newIndex) {
       index = (newIndex + items.length) % items.length;
       const item = items[index];
-      image.src = item.dataset.full;
-      image.alt = item.dataset.caption;
-      text.textContent = item.dataset.caption;
-      count.textContent = `${index + 1} / ${items.length}`;
+      const url = item.dataset.full;
+
+      pending = item;
+      if (image.getAttribute("src") === url && image.complete) {
+        showText();
+      } else {
+        image.classList.add("is-loading");
+        image.src = url;
+      }
       onChange(index);
+
+      if (items.length > 1) {
+        preload(items[(index + 1) % items.length]);
+        preload(items[(index - 1 + items.length) % items.length]);
+      }
     }
 
     dialog
@@ -88,20 +127,26 @@
       }
     });
 
-    return function open(thumbs, startIndex, select, shot) {
-      items = thumbs;
-      onChange = select;
-      opener = shot;
-      show(startIndex);
+    return function open(gallery) {
+      items = gallery.items;
+      onChange = gallery.onChange;
+      opener = gallery.opener;
+      dialog.setAttribute("aria-label", `${baseLabel}: ${gallery.name}`);
+      show(gallery.index);
       document.documentElement.classList.add("lightbox-open");
       dialog.showModal();
     };
   }
 
+  // Browsers without <dialog> open the full-size screenshot instead
+  function openImage(gallery) {
+    window.location.href = gallery.items[gallery.index].dataset.full;
+  }
+
   function init() {
     const dialog = document.getElementById("lightbox");
     const canOpen = dialog && typeof dialog.showModal === "function";
-    const openLightbox = canOpen ? createLightbox(dialog) : () => {};
+    const openLightbox = canOpen ? createLightbox(dialog) : openImage;
 
     document.querySelectorAll("[data-gallery]").forEach((gallery) => {
       initGallery(gallery, openLightbox);

@@ -556,10 +556,17 @@ hr.separator {
   object-fit: scale-down;
 }
 
-.projects .project-shot:focus-visible,
-.projects .project-thumb:focus-visible {
+.projects .project-shot:focus-visible {
   outline: 2px solid #ffb400;
   outline-offset: -2px;
+}
+
+/* White ring outside the thumbnail, so it differs from the yellow border of
+   the selected one */
+.projects .project-thumb:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+  opacity: 1;
 }
 
 .projects .project-thumbs {
@@ -604,7 +611,11 @@ hr.separator {
   object-fit: cover;
 }
 
+/* A Bootstrap .row: its -15px side margins are reset so the padding below
+   (plus the columns' own 15px) is the real distance from the card border */
 .projects .project-body {
+  margin-left: 0;
+  margin-right: 0;
   padding: 30px 15px 10px;
 }
 
@@ -809,6 +820,7 @@ html.lightbox-open {
 .lightbox {
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   max-width: none;
   max-height: none;
   margin: 0;
@@ -842,9 +854,15 @@ html.lightbox-open {
   display: block;
   max-width: 100%;
   max-height: calc(100vh - 170px);
+  max-height: calc(100dvh - 170px);
   width: auto;
   height: auto;
   border-radius: 6px;
+  transition: opacity 0.2s;
+}
+
+.lightbox-img.is-loading {
+  opacity: 0.35;
 }
 
 .lightbox-caption {
@@ -923,6 +941,7 @@ html.lightbox-open {
 
   .lightbox-img {
     max-height: calc(100vh - 190px);
+    max-height: calc(100dvh - 190px);
   }
 
   .lightbox-prev,
@@ -944,6 +963,7 @@ html.lightbox-open {
 @media (prefers-reduced-motion: reduce) {
   .projects .project-thumb,
   .projects .project-link,
+  .lightbox-img,
   .lightbox-btn {
     transition: none;
   }

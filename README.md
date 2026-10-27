@@ -24,7 +24,8 @@ my CV, GitHub and LinkedIn.
   framework, no build step and about 13 KB of JavaScript.
 - **SEO-friendly** – canonical URLs, hreflang links between the language
   versions, Open Graph and X cards, JSON-LD structured data (`Person`,
-  `WebSite`, `ProfilePage` with breadcrumbs) and a sitemap.
+  `WebSite`, `ProfilePage` and `CollectionPage` with breadcrumbs) and a
+  sitemap.
 - **Responsive** – a desktop layout with side navigation and a mobile layout
   with a slide-in menu, plus scroll reveal animations.
 - **Accessible** – semantic headings, descriptive alt texts and labelled
@@ -35,7 +36,7 @@ my CV, GitHub and LinkedIn.
 - **Markup & styles:** HTML5, CSS3, [Bootstrap 4](https://getbootstrap.com/)
   (grid and utilities), [Font Awesome 4](https://fontawesome.com/v4/)
 - **Scripts:** vanilla JavaScript (language redirect and switcher, scroll
-  animations, preloader)
+  animations, preloader, screenshot galleries with a lightbox)
 - **Fonts:** Poppins and Open Sans from Google Fonts
 - **Hosting:** Apache 2.4 – `.htaccess` handles clean URLs, redirects and
   caching
