@@ -949,11 +949,21 @@ html.lightbox-open {
   }
 }
 
-/* Home page: the About and Projects buttons share one width */
+/* Home page: the About and Projects buttons sit side by side on desktops
+   and stack at one width on smaller screens and where the home text column
+   is narrowed to 450px (992-1100px), as both buttons don't fit next to
+   each other there */
 .home-buttons {
   display: inline-flex;
   flex-direction: column;
   gap: 16px;
+}
+
+@media (min-width: 1101px) {
+  .home-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
 
 /* [ RESPONSIVE DESIGN STYLES ] */
